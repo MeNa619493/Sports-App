@@ -9,14 +9,15 @@
 import Foundation
 
 class NetworkManager: ApiService {
+    
     func fetchSports(endPoint: String, completion: @escaping ((Array<Sport>?, Error?) -> Void)) {
         
         if let  url = URL(string: UrlServices(endPoint: endPoint).url) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
-                    let decodedjson: SportsResponse = convertFromJson(data: data) ?? SportsResponse(sports: Array<Sport>())
+                    let decodedJson: SportsResponse = convertFromJson(data: data) ?? SportsResponse(sports: Array<Sport>())
                     
-                    completion(decodedjson.sports,nil)
+                    completion(decodedJson.sports, nil)
                 }
                 if let error = error {
                     completion(nil, error)
@@ -24,6 +25,22 @@ class NetworkManager: ApiService {
             }.resume()
         }
 
+    }
+    
+    func fetchLeauges(endPoint: String, completion: @escaping ((Array<League>?, Error?) -> Void)) {
+        if let url = URL(string: UrlServices(endPoint: endPoint).url){
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let data = data {
+                    let decodedJson: LeaguesResponse = convertFromJson(data: data) ?? LeaguesResponse(countries: Array<League>())
+                    
+                    completion(decodedJson.countries, nil)
+                }
+                
+                if let error = error {
+                    completion(nil, error)
+                }
+            }.resume()
+        }
     }
     
 }

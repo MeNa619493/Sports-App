@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeagueCell" rowHeight="150" id="KGk-i7-Jjw" customClass="LeagueTableViewCell" customModule="SportsApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="441" height="174"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="441" height="174"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yK2-vE-zeK">
+                        <rect key="frame" x="16" y="16" width="409" height="142"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KSc-sl-0xX">
+                                <rect key="frame" x="8" y="8" width="120" height="126"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="P6P-I0-cya"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eC6-Y8-1TX">
+                                <rect key="frame" x="144" y="60.5" width="175" height="21.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="mvo-Nf-BFj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBy-hg-YPZ">
+                                <rect key="frame" x="353" y="46" width="40" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="ILL-qz-MP3"/>
+                                    <constraint firstAttribute="height" constant="50" id="eZT-OO-dO6"/>
+                                </constraints>
+                                <state key="normal" image="youtube (3)"/>
+                                <connections>
+                                    <action selector="onYoutubePressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fBL-2p-dnl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KSc-sl-0xX" firstAttribute="leading" secondItem="yK2-vE-zeK" secondAttribute="leading" constant="8" id="5Px-da-y4z"/>
+                            <constraint firstItem="eC6-Y8-1TX" firstAttribute="leading" secondItem="KSc-sl-0xX" secondAttribute="trailing" constant="16" id="Lhd-PV-HpD"/>
+                            <constraint firstItem="eC6-Y8-1TX" firstAttribute="centerY" secondItem="yK2-vE-zeK" secondAttribute="centerY" id="SGU-5d-A0T"/>
+                            <constraint firstAttribute="trailing" secondItem="gBy-hg-YPZ" secondAttribute="trailing" constant="16" id="Uiu-vk-l4x"/>
+                            <constraint firstItem="gBy-hg-YPZ" firstAttribute="centerY" secondItem="yK2-vE-zeK" secondAttribute="centerY" id="bEj-nK-RT1"/>
+                            <constraint firstAttribute="bottom" secondItem="KSc-sl-0xX" secondAttribute="bottom" constant="8" id="g6R-iK-9cA"/>
+                            <constraint firstItem="KSc-sl-0xX" firstAttribute="top" secondItem="yK2-vE-zeK" secondAttribute="top" constant="8" id="uqG-QK-362"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="yK2-vE-zeK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="LjG-MW-iK0"/>
+                    <constraint firstItem="yK2-vE-zeK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="kho-Bk-em5"/>
+                    <constraint firstAttribute="bottom" secondItem="yK2-vE-zeK" secondAttribute="bottom" constant="16" id="lO5-LR-eHh"/>
+                    <constraint firstAttribute="trailing" secondItem="yK2-vE-zeK" secondAttribute="trailing" constant="16" id="nyb-gV-jt5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="containerViewOfCell" destination="yK2-vE-zeK" id="bpG-9V-Mow"/>
+                <outlet property="leaugeImage" destination="KSc-sl-0xX" id="atK-pW-Tdk"/>
+                <outlet property="leaugeLabel" destination="eC6-Y8-1TX" id="WmV-GB-ivW"/>
+            </connections>
+            <point key="canvasLocation" x="219.56521739130437" y="150.66964285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="youtube (3)" width="64" height="64"/>
+    </resources>
+</document>

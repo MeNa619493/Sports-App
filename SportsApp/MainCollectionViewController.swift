@@ -45,18 +45,28 @@ class MainCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mainCell", for: indexPath) as? MainCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mainCell", for: indexPath) as! MainCollectionViewCell
         
         // Configure the cell
-        cell?.configureMainCell(sportsTitle: sportsArray[indexPath.row].strSport ?? "no value", sportsImageurl: sportsArray[indexPath.row].strSportThumb ?? "no value")
+        cell.makeImageRounded()
+        cell.configureMainCell(sportsTitle: sportsArray[indexPath.row].strSport ?? "no value", sportsImageurl: sportsArray[indexPath.row].strSportThumb ?? "no value")
     
-        return cell!
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:
         UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             
-        return CGSize(width: 200, height: 250)
+        let widthSize = (self.collectionView.frame.size.width - 48) / 2
+        return CGSize(width: widthSize, height:180)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let LeagueVC = self.storyboard?.instantiateViewController(identifier: "LeaguesVC") as! LeaguesTableViewController
+        LeagueVC.sport = sportsArray[indexPath.row].strSport
+        self.navigationController?.pushViewController(LeagueVC, animated: true)
+        
     }
 
 }

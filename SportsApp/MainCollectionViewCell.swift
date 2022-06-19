@@ -25,5 +25,9 @@ class MainCollectionViewCell: UICollectionViewCell {
         let url = URL(string: sportsImageurl)
         sportsImage.sd_setImage(with: url, completed: nil)
     }
+    
+    func makeImageRounded() {
+        sportsImage.layer.cornerRadius = sportsImage.frame.height / 2
+    }
 
 }

@@ -9,14 +9,14 @@
 import Foundation
 
 struct SportsResponse: Codable{
-    let sports: Array<Sport>?
+    var sports: Array<Sport>?
 }
 
 struct Sport: Codable {
-    let idSport : String?
-    let strSport : String?
-    let strFormat : String?
-    let strSportThumb : String?
-    let strSportIconGreen : String?
-    let strSportDescription : String?
+    var idSport : String?
+    var strSport : String?
+    var strFormat : String?
+    var strSportThumb : String?
+    var strSportIconGreen : String?
+    var strSportDescription : String?
 }
