@@ -23,7 +23,8 @@ class MainCollectionViewCell: UICollectionViewCell {
     func configureMainCell(sportsTitle: String, sportsImageurl: String) {
         sportsLabel.text = sportsTitle
         let url = URL(string: sportsImageurl)
-        sportsImage.sd_setImage(with: url, completed: nil)
+        //sportsImage.sd_setImage(with: url, completed: nil)
+        sportsImage.sd_setImage(with: url, placeholderImage: UIImage(named: "SM-placeholder.png"))
     }
     
     func makeImageRounded() {

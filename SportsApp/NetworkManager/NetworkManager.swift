@@ -43,6 +43,23 @@ class NetworkManager: ApiService {
         }
     }
     
+    func fetchUpcomingEvents(endPoint: String, completion: @escaping ((Array<Event>?, Error?) -> Void)) {
+        if let url = URL(string: UrlServices(endPoint: endPoint).url){
+            URLSession.shared.dataTask(with: url){ data, response, error in
+                if let data = data {
+                    
+                    let decodedJson: UpcomingEventsResponse = convertFromJson(data: data) ?? UpcomingEventsResponse(events: Array<Event>())
+                    
+                    completion(decodedJson.events, nil)
+                }
+                
+                if let error = error {
+                    completion(nil, error)
+                }
+            }.resume()
+        }
+    }
+    
 }
     
     

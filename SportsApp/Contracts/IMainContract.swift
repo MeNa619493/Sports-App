@@ -8,17 +8,17 @@
 
 import Foundation
 
-protocol IMainView { // For home View
+protocol IMainView {
     func renderMainView(sports: Array<Sport>)
     func postErrorMainView(error: Error)
 }
 
-protocol IMainPresenter {  // For Presenter
+protocol IMainPresenter {
     func fetchData(endPoint: String)
     func onSuccess(sports: Array<Sport>)
     func onFail(error: Error)
 }
 
-protocol IMainModel { // For Model
+protocol IMainModel { 
     func fetchDataFromApi(endPoint: String)
 }

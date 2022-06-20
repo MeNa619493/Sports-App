@@ -8,17 +8,17 @@
 
 import Foundation
 
-protocol ILeagueView { // For home View
+protocol ILeagueView {
     func renderLeagueView(leagues: Array<League>)
     func postErrorLeagueView(error: Error)
 }
 
-protocol ILeaguePresenter {  // For Presenter
+protocol ILeaguePresenter {
     func fetchData(endPoint: String)
     func onSuccess(leagues: Array<League>)
     func onFail(error: Error)
 }
 
-protocol ILeagueModel { // For Model
+protocol ILeagueModel { 
     func fetchDataFromApi(endPoint: String)
 }

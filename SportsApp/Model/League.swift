@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LeaguesResponse:Codable {
+struct LeaguesResponse: Codable {
     var countries: Array<League>?
 }
 

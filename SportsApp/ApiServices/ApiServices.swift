@@ -12,4 +12,6 @@ protocol ApiService {
     func fetchSports(endPoint: String, completion: @escaping ((Array<Sport>?, Error?) -> Void))
     
     func fetchLeauges(endPoint: String, completion: @escaping ((Array<League>?, Error?) -> Void))
+    
+    func fetchUpcomingEvents(endPoint: String, completion: @escaping ((Array<Event>?, Error?) -> Void))
 }
