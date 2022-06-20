@@ -42,16 +42,14 @@ class LeagueTableViewCell: UITableViewCell {
     }
     
     @IBAction func onYoutubePressed(_ sender: Any) {
-        print("youtube")
         
         guard let urlYoutube = urlYoutube else {
             return
         }
         
         if !urlYoutube.isEmpty {
-            if let url = URL(string: urlYoutube) {
-                UIApplication.shared.open(url)
-            }
+            guard let url = URL(string: "https://\(urlYoutube)") else { return }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
             print("inavalid url")
         }
