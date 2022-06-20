@@ -63,6 +63,10 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: upcomingEventsCollection.frame.width, height: upcomingEventsCollection.frame.height)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
 }
 
 extension LeagueDetailsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -88,9 +92,9 @@ extension LeagueDetailsViewController: UITableViewDelegate, UITableViewDataSourc
         return cell
     }
     
-    private func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 40
-    }
+//    private func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 80.0
+//    }
     
 }
 

@@ -26,7 +26,6 @@ class LeaguesTableViewController: UITableViewController {
             leaguePresenter.fetchData(endPoint: "search_all_leagues.php?s=\(sport)")
         }
         
-
     }
 
     // MARK: - Table view data source
