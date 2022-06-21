@@ -136,6 +136,7 @@
 		1EC2174D285E5DF600856354 /* SportsApp */ = {
 			isa = PBXGroup;
 			children = (
+				1EF2A3352862373F0067AB6C /* DBManager */,
 				1EC21781285E6BDC00856354 /* Presenter */,
 				1EC2177E285E6AD500856354 /* ModelController */,
 				1EC2177B285E6A3200856354 /* Contracts */,
@@ -232,6 +233,13 @@
 				1EEDEC4228608EDD00F28FFD /* LeagueDetailsPresnter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1EF2A3352862373F0067AB6C /* DBManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DBManager;
 			sourceTree = "<group>";
 		};
 		1EFA23F1286157D10070C781 /* Assets */ = {

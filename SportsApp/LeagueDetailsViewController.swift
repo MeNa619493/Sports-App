@@ -36,6 +36,8 @@ class LeagueDetailsViewController: UIViewController {
     var latestResultsArray = Array<Event>()
     var teamsArray = Array<Team>()
     
+    @IBOutlet weak var favouriteButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -72,6 +74,17 @@ class LeagueDetailsViewController: UIViewController {
     }
     
     @IBAction func onFavouriteButtonPressed(_ sender: Any) {
+        
+        if !league!.isFavourite {
+            favouriteButton.image = UIImage(systemName: "heart.fill")
+            print("save league to core data")
+            league?.isFavourite = true
+        } else {
+            favouriteButton.image = UIImage(systemName: "heart")
+            print("remove league from core data")
+            league?.isFavourite = false
+        }
+        
     }
     
     

@@ -45,8 +45,8 @@
                                                 <action selector="onBackButtonPressed:" destination="BYZ-38-t0r" id="k1P-jd-kMN"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" image="images" id="UKr-kh-yGK">
-                                            <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" id="UKr-kh-yGK">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <action selector="onFavouriteButtonPressed:" destination="BYZ-38-t0r" id="WlK-vq-YoU"/>
                                             </connections>
@@ -150,6 +150,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="favouriteButton" destination="UKr-kh-yGK" id="I3q-gM-7wS"/>
                         <outlet property="latestResultsTable" destination="arA-9s-QsN" id="yXQ-L1-Lkf"/>
                         <outlet property="teamsCollection" destination="aQT-s8-tQM" id="tTe-0Y-IVG"/>
                         <outlet property="upcomingEventsCollection" destination="oJh-GA-Orc" id="wwC-Q7-i0B"/>
@@ -414,8 +415,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart" catalog="system" width="64" height="54"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
-        <image name="images" width="75" height="75"/>
         <image name="round_arrow_back_ios_black_18pt_1x" width="18" height="18"/>
     </resources>
 </document>
