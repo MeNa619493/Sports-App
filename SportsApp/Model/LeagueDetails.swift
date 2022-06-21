@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UpcomingEventsResponse: Codable {
+struct EventsResponse: Codable {
     var events: Array<Event>?
 }
 

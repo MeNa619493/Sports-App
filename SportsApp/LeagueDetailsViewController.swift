@@ -24,9 +24,17 @@ class LeagueDetailsViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var teamsCollection: UICollectionView!
+    @IBOutlet weak var teamsCollection: UICollectionView! {
+        didSet {
+            teamsCollection.delegate = self
+            teamsCollection.dataSource = self
+        }
+    }
+        
     
     var upcomingEventsArray = Array<Event>()
+    var latestResultsArray = Array<Event>()
+    var teamsArray = Array<Team>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,28 +44,73 @@ class LeagueDetailsViewController: UIViewController {
         
         latestResultsTable.register(UINib(nibName: "LatestResultTableViewCell", bundle: nil), forCellReuseIdentifier: "LatestResultsCell")
         
+        
+        teamsCollection.register(UINib(nibName: "TeamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TeamCell")
+        
+        
+        upcomingEventsCollection.showsHorizontalScrollIndicator = false
+        latestResultsTable.showsVerticalScrollIndicator = false
+        teamsCollection.showsHorizontalScrollIndicator = false
+        
         let leagueDetailsPresnter: ILeagueDetailsPresenter = LeagueDetailsPresnter(leagueDetailsView: self)
-        leagueDetailsPresnter.fetchData(endPoint: "eventsseason.php?id=4328")
+        leagueDetailsPresnter.fetchData(
+            endPointUpcomingEvents: "eventsseason.php?id=4328&s=2022-2023",
+            endPointLatestResults: "eventsseason.php?id=4328&s=2021-2022",
+            endPointTeams: "search_all_teams.php?l=English%20League%20Championship")
         
     }
+    
+    @IBAction func onBackButtonPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func onFavouriteButtonPressed(_ sender: Any) {
+    }
+    
+    
+    
 }
 
 extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        upcomingEventsArray.count
+        switch collectionView {
+        case upcomingEventsCollection:
+            return upcomingEventsArray.count
+        case teamsCollection:
+            return teamsArray.count
+        default:
+            return 10
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingEventsCell", for: indexPath) as! UpcomingEventsCollectionViewCell
             
-            // Configure the cell
-        cell.configureCell(
-            imageUrl: upcomingEventsArray[indexPath.row].strThumb ?? "no value",
-            teamsName: upcomingEventsArray[indexPath.row].strEvent ?? "no value",
-            date: upcomingEventsArray[indexPath.row].dateEvent ?? "no value",
-            hour: upcomingEventsArray[indexPath.row].strTime ?? "no value")
         
+        switch collectionView {
+        case upcomingEventsCollection:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingEventsCell", for: indexPath) as! UpcomingEventsCollectionViewCell
+                
+            cell.configureCell(
+                imageUrl: upcomingEventsArray[indexPath.row].strThumb ?? "no value",
+                teamsName: upcomingEventsArray[indexPath.row].strEvent ?? "no value",
+                date: upcomingEventsArray[indexPath.row].dateEvent ?? "no value",
+                hour: upcomingEventsArray[indexPath.row].strTime ?? "no value")
             return cell
+            
+        case teamsCollection:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath) as! TeamCollectionViewCell
+                
+            cell.configureCell(imageUrl: teamsArray[indexPath.row].strTeamBadge ?? "no value")
+            return cell
+            
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath) as! TeamCollectionViewCell
+                
+            cell.configureCell(imageUrl: teamsArray[indexPath.row].strTeamBadge ?? "no value")
+            return cell
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -82,12 +135,11 @@ extension LeagueDetailsViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: "LatestResultsCell", for: indexPath) as! LatestResultTableViewCell
 
         // Configure the cell...
-        cell.makeCellRounded()
         cell.configureCell(
-            homeTeam: upcomingEventsArray[indexPath.row].strHomeTeam ?? "no value",
-            awayTeam: upcomingEventsArray[indexPath.row].strAwayTeam ?? "no value",
-            homeScore: upcomingEventsArray[indexPath.row].intHomeScore ?? "no value",
-            awayScore: upcomingEventsArray[indexPath.row].intAwayScore ?? "no value")
+            homeTeam: latestResultsArray[indexPath.row].strHomeTeam ?? "no value",
+            awayTeam: latestResultsArray[indexPath.row].strAwayTeam ?? "no value",
+            homeScore: latestResultsArray[indexPath.row].intHomeScore ?? "no value",
+            awayScore: latestResultsArray[indexPath.row].intAwayScore ?? "no value")
         
         return cell
     }
@@ -99,13 +151,27 @@ extension LeagueDetailsViewController: UITableViewDelegate, UITableViewDataSourc
 }
 
 extension LeagueDetailsViewController: ILeagueDetailsview {
-    func renderLeagueDetailsView(events: Array<Event>) {
-        self.upcomingEventsArray = events
+    func renderUpcomingEventsView(upcomingEvents: Array<Event>) {
+        self.upcomingEventsArray = upcomingEvents
         DispatchQueue.main.async {
             self.upcomingEventsCollection.reloadData()
+        }
+    }
+    
+    func renderLatestResultsView(latestResults: Array<Event>) {
+        self.latestResultsArray = latestResults
+        DispatchQueue.main.async {
             self.latestResultsTable.reloadData()
         }
     }
+    
+    func renderTeamsView(teams: Array<Team>) {
+        self.teamsArray = teams
+        DispatchQueue.main.async {
+            self.teamsCollection.reloadData()
+        }
+    }
+    
     
     func postErrorILeagueDetailsView(error: Error) {
         print(error.localizedDescription)

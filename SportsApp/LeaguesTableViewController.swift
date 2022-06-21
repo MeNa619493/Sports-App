@@ -43,14 +43,13 @@ class LeaguesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeagueCell", for: indexPath) as! LeagueTableViewCell
 
         // Configure the cell...
-        cell.makeCellRounded()
         cell.configureLeaugeCell(LeagueTitle: leaguesArray[indexPath.row].strLeague ?? "no value", LeagueImageurl: leaguesArray[indexPath.row].strBadge ?? "no value", urlYoutube: leaguesArray[indexPath.row].strYoutube ?? "no value")
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 175
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

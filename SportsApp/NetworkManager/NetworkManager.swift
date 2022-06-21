@@ -48,9 +48,43 @@ class NetworkManager: ApiService {
             URLSession.shared.dataTask(with: url){ data, response, error in
                 if let data = data {
                     
-                    let decodedJson: UpcomingEventsResponse = convertFromJson(data: data) ?? UpcomingEventsResponse(events: Array<Event>())
+                    let decodedJson: EventsResponse = convertFromJson(data: data) ?? EventsResponse(events: Array<Event>())
                     
                     completion(decodedJson.events, nil)
+                }
+                
+                if let error = error {
+                    completion(nil, error)
+                }
+            }.resume()
+        }
+    }
+    
+    func fetchLatestResults(endPoint: String, completion: @escaping ((Array<Event>?, Error?) -> Void)) {
+        if let url = URL(string: UrlServices(endPoint: endPoint).url){
+            URLSession.shared.dataTask(with: url){ data, response, error in
+                if let data = data {
+                    
+                    let decodedJson: EventsResponse = convertFromJson(data: data) ?? EventsResponse(events: Array<Event>())
+                    
+                    completion(decodedJson.events, nil)
+                }
+                
+                if let error = error {
+                    completion(nil, error)
+                }
+            }.resume()
+        }
+    }
+    
+    func fetchTeams(endPoint: String, completion: @escaping ((Array<Team>?, Error?) -> Void)) {
+        if let url = URL(string: UrlServices(endPoint: endPoint).url){
+            URLSession.shared.dataTask(with: url){ data, response, error in
+                if let data = data {
+                    
+                    let decodedJson: TeamResponse = convertFromJson(data: data) ?? TeamResponse(teams: Array<Team>())
+                    
+                    completion(decodedJson.teams, nil)
                 }
                 
                 if let error = error {

@@ -22,6 +22,8 @@ class LeagueTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        containerViewOfCell.layer.cornerRadius = containerViewOfCell.frame.height / 2
+        leaugeImage.layer.cornerRadius = leaugeImage.frame.height / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -34,11 +36,6 @@ class LeagueTableViewCell: UITableViewCell {
         let url = URL(string: LeagueImageurl)
         leaugeImage.sd_setImage(with: url, completed: nil)
         self.urlYoutube = urlYoutube
-    }
-    
-    func makeCellRounded() {
-        containerViewOfCell.layer.cornerRadius = containerViewOfCell.frame.height / 2
-        leaugeImage.layer.cornerRadius = leaugeImage.frame.height / 2
     }
     
     @IBAction func onYoutubePressed(_ sender: Any) {

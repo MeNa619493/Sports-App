@@ -9,16 +9,20 @@
 import Foundation
 
 protocol ILeagueDetailsview {
-    func renderLeagueDetailsView(events: Array<Event>)
+    func renderUpcomingEventsView(upcomingEvents: Array<Event>)
+    func renderLatestResultsView(latestResults: Array<Event>)
+    func renderTeamsView(teams: Array<Team>)
     func postErrorILeagueDetailsView(error: Error)
 }
 
 protocol ILeagueDetailsPresenter {
-    func fetchData(endPoint: String)
-    func onSuccess(events: Array<Event>)
+    func fetchData(endPointUpcomingEvents: String, endPointLatestResults: String, endPointTeams: String)
+    func onSuccessFetchingUpcomingEvents(upcomingEvents: Array<Event>)
+    func onSuccessFetchingLatestResults(latestResults: Array<Event>)
+    func onSuccessFetchingTeams(teams: Array<Team>)
     func onFail(error: Error)
 }
 
 protocol ILeagueDetailsModel { 
-    func fetchDataFromApi(endPoint: String)
+    func fetchDataFromApi(endPointUpcomingEvents: String, endPointLatestResults: String, endPointTeams: String)
 }

@@ -23,6 +23,7 @@ class LatestResultTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        containerView.layer.cornerRadius = containerView.frame.height / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,11 +32,8 @@ class LatestResultTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func makeCellRounded() {
-        containerView.layer.cornerRadius = containerView.frame.height / 2
-    }
-    
     func configureCell(homeTeam: String, awayTeam: String, homeScore: String, awayScore: String) {
+        
         homeTeamLabel.text = homeTeam
         homeTeamScoreLabel.text = homeScore
         awayTeamLabel.text = awayTeam

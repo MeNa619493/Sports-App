@@ -18,6 +18,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        sportsImage.layer.cornerRadius = sportsImage.frame.height / 2
     }
     
     func configureMainCell(sportsTitle: String, sportsImageurl: String) {
@@ -25,10 +26,6 @@ class MainCollectionViewCell: UICollectionViewCell {
         let url = URL(string: sportsImageurl)
         //sportsImage.sd_setImage(with: url, completed: nil)
         sportsImage.sd_setImage(with: url, placeholderImage: UIImage(named: "SM-placeholder.png"))
-    }
-    
-    func makeImageRounded() {
-        sportsImage.layer.cornerRadius = sportsImage.frame.height / 2
     }
 
 }

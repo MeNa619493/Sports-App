@@ -48,7 +48,6 @@ class MainCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mainCell", for: indexPath) as! MainCollectionViewCell
         
         // Configure the cell
-        cell.makeImageRounded()
         cell.configureMainCell(sportsTitle: sportsArray[indexPath.row].strSport ?? "no value", sportsImageurl: sportsArray[indexPath.row].strSportThumb ?? "no value")
     
         return cell

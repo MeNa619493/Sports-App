@@ -15,14 +15,22 @@ class LeagueDetailsPresnter: ILeagueDetailsPresenter {
         self.leagueDetailsView = leagueDetailsView
     }
     
-    func fetchData(endPoint: String) {
+    func fetchData(endPointUpcomingEvents: String, endPointLatestResults: String, endPointTeams: String) {
         let leagueDetailsModel = LeagueDetailsModelController(iLeagueDetailsPresnter: self)
-        leagueDetailsModel.fetchDataFromApi(endPoint: endPoint)
+        leagueDetailsModel.fetchDataFromApi(endPointUpcomingEvents: endPointUpcomingEvents, endPointLatestResults: endPointLatestResults, endPointTeams: endPointTeams)
         
     }
     
-    func onSuccess(events: Array<Event>) {
-        leagueDetailsView.renderLeagueDetailsView(events: events)
+    func onSuccessFetchingUpcomingEvents(upcomingEvents events: Array<Event>) {
+        leagueDetailsView.renderUpcomingEventsView(upcomingEvents: events)
+    }
+    
+    func onSuccessFetchingLatestResults(latestResults events: Array<Event>) {
+        leagueDetailsView.renderLatestResultsView(latestResults: events)
+    }
+    
+    func onSuccessFetchingTeams(teams: Array<Team>) {
+        leagueDetailsView.renderTeamsView(teams: teams)
     }
     
     func onFail(error: Error) {
