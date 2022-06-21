@@ -31,11 +31,12 @@ class LeagueTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureLeaugeCell(LeagueTitle: String, LeagueImageurl: String, urlYoutube: String) {
-        leaugeLabel.text = LeagueTitle
-        let url = URL(string: LeagueImageurl)
-        leaugeImage.sd_setImage(with: url, completed: nil)
-        self.urlYoutube = urlYoutube
+    func configureLeaugeCell(league: League) {
+        leaugeLabel.text = league.strLeague ?? "no value"
+        if let url = URL(string: league.strBadge ?? "no value"){
+            leaugeImage.sd_setImage(with: url, completed: nil)
+        }
+        self.urlYoutube = league.strYoutube ?? "no value"
     }
     
     @IBAction func onYoutubePressed(_ sender: Any) {

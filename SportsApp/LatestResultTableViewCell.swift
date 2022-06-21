@@ -32,12 +32,12 @@ class LatestResultTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(homeTeam: String, awayTeam: String, homeScore: String, awayScore: String) {
+    func configureCell(latestResult: Event) {
         
-        homeTeamLabel.text = homeTeam
-        homeTeamScoreLabel.text = homeScore
-        awayTeamLabel.text = awayTeam
-        awayTeamScoreLabel.text = awayScore
+        homeTeamLabel.text = latestResult.strHomeTeam ?? "no value"
+        homeTeamScoreLabel.text = latestResult.intHomeScore ?? "no value"
+        awayTeamLabel.text = latestResult.strAwayTeam ?? "no value"
+        awayTeamScoreLabel.text = latestResult.intAwayScore ?? "no value"
     }
     
 }

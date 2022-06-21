@@ -43,7 +43,7 @@ class LeaguesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeagueCell", for: indexPath) as! LeagueTableViewCell
 
         // Configure the cell...
-        cell.configureLeaugeCell(LeagueTitle: leaguesArray[indexPath.row].strLeague ?? "no value", LeagueImageurl: leaguesArray[indexPath.row].strBadge ?? "no value", urlYoutube: leaguesArray[indexPath.row].strYoutube ?? "no value")
+        cell.configureLeaugeCell(league: leaguesArray[indexPath.row])
         
         return cell
     }

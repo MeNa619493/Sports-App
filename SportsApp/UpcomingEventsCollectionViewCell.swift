@@ -24,13 +24,13 @@ class UpcomingEventsCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 
-    func configureCell(imageUrl: String, teamsName: String, date: String, hour: String) {
-        if let url = URL(string: imageUrl) {
+    func configureCell(upcomingEvent: Event) {
+        if let url = URL(string: upcomingEvent.strThumb ?? "no value") {
             upcomingImage.sd_setImage(with: url, completed: nil)
         }
-        teamsLabel.text = teamsName
-        dateLabel.text = date
-        hourLabel.text = hour.substring(to: 5)
+        teamsLabel.text = upcomingEvent.strEvent
+        dateLabel.text = upcomingEvent.dateEvent
+        hourLabel.text = upcomingEvent.strTime?.substring(to: 5)
     }
 }
 

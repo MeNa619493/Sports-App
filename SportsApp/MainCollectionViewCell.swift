@@ -21,11 +21,12 @@ class MainCollectionViewCell: UICollectionViewCell {
         sportsImage.layer.cornerRadius = sportsImage.frame.height / 2
     }
     
-    func configureMainCell(sportsTitle: String, sportsImageurl: String) {
-        sportsLabel.text = sportsTitle
-        let url = URL(string: sportsImageurl)
-        //sportsImage.sd_setImage(with: url, completed: nil)
-        sportsImage.sd_setImage(with: url, placeholderImage: UIImage(named: "SM-placeholder.png"))
+    func configureMainCell(sport: Sport) {
+        sportsLabel.text = sport.strSport ?? "no value"
+        if let url = URL(string: sport.strSportThumb ?? "no value") {
+            //sportsImage.sd_setImage(with: url, completed: nil)
+            sportsImage.sd_setImage(with: url, placeholderImage: UIImage(named: "SM-placeholder.png"))
+        }
     }
 
 }

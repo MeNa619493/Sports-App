@@ -91,11 +91,7 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
         case upcomingEventsCollection:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingEventsCell", for: indexPath) as! UpcomingEventsCollectionViewCell
                 
-            cell.configureCell(
-                imageUrl: upcomingEventsArray[indexPath.row].strThumb ?? "no value",
-                teamsName: upcomingEventsArray[indexPath.row].strEvent ?? "no value",
-                date: upcomingEventsArray[indexPath.row].dateEvent ?? "no value",
-                hour: upcomingEventsArray[indexPath.row].strTime ?? "no value")
+            cell.configureCell(upcomingEvent: upcomingEventsArray[indexPath.row])
             return cell
             
         case teamsCollection:
@@ -135,12 +131,7 @@ extension LeagueDetailsViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: "LatestResultsCell", for: indexPath) as! LatestResultTableViewCell
 
         // Configure the cell...
-        cell.configureCell(
-            homeTeam: latestResultsArray[indexPath.row].strHomeTeam ?? "no value",
-            awayTeam: latestResultsArray[indexPath.row].strAwayTeam ?? "no value",
-            homeScore: latestResultsArray[indexPath.row].intHomeScore ?? "no value",
-            awayScore: latestResultsArray[indexPath.row].intAwayScore ?? "no value")
-        
+        cell.configureCell(latestResult: latestResultsArray[indexPath.row])
         return cell
     }
     

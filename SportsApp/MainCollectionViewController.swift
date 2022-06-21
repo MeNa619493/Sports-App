@@ -48,7 +48,7 @@ class MainCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mainCell", for: indexPath) as! MainCollectionViewCell
         
         // Configure the cell
-        cell.configureMainCell(sportsTitle: sportsArray[indexPath.row].strSport ?? "no value", sportsImageurl: sportsArray[indexPath.row].strSportThumb ?? "no value")
+        cell.configureMainCell(sport: sportsArray[indexPath.row])
     
         return cell
     }
