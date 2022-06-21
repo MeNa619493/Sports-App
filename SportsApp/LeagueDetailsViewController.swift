@@ -52,8 +52,6 @@ class LeagueDetailsViewController: UIViewController {
         latestResultsTable.showsVerticalScrollIndicator = false
         teamsCollection.showsHorizontalScrollIndicator = false
         
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

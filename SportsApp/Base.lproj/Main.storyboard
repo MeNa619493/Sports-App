@@ -40,11 +40,13 @@
                                 <items>
                                     <navigationItem title="League Details" id="3c6-fT-dKC">
                                         <barButtonItem key="leftBarButtonItem" title="Leagues" image="round_arrow_back_ios_black_18pt_1x" id="lHg-6o-ST2">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <action selector="onBackButtonPressed:" destination="BYZ-38-t0r" id="k1P-jd-kMN"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" id="UKr-kh-yGK">
+                                        <barButtonItem key="rightBarButtonItem" image="images" id="UKr-kh-yGK">
+                                            <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <connections>
                                                 <action selector="onFavouriteButtonPressed:" destination="BYZ-38-t0r" id="WlK-vq-YoU"/>
                                             </connections>
@@ -170,6 +172,7 @@
                                 <items>
                                     <navigationItem title="Team Details" id="2e9-vd-qig">
                                         <barButtonItem key="leftBarButtonItem" image="round_arrow_back_ios_black_18pt_1x" id="EHP-OF-Vzg">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <action selector="onBackButtonPressed:" destination="Xbt-xK-iFA" id="Vkt-hG-YDG"/>
                                             </connections>
@@ -411,8 +414,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart" catalog="system" width="64" height="54"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
+        <image name="images" width="75" height="75"/>
         <image name="round_arrow_back_ios_black_18pt_1x" width="18" height="18"/>
     </resources>
 </document>

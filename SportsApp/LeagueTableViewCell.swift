@@ -32,6 +32,7 @@ class LeagueTableViewCell: UITableViewCell {
     }
     
     func configureLeaugeCell(league: League) {
+        print(league.isFavourite)
         leaugeLabel.text = league.strLeague ?? "no value"
         if let url = URL(string: league.strBadge ?? "no value"){
             leaugeImage.sd_setImage(with: url, completed: nil)

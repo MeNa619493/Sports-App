@@ -27,13 +27,43 @@ class NetworkManager: ApiService {
 
     }
     
+//    func fetchLeauges(endPoint: String, completion: @escaping ((Array<League>?, Error?) -> Void)) {
+//        if let url = URL(string: UrlServices(endPoint: endPoint).url){
+//            URLSession.shared.dataTask(with: url) { data, response, error in
+//                if let data = data {
+//                    let decodedJson: LeaguesResponse = convertFromJson(data: data) ?? LeaguesResponse(countries: Array<League>())
+//
+//                    completion(decodedJson.countries, nil)
+//                }
+//
+//                if let error = error {
+//                    completion(nil, error)
+//                }
+//            }.resume()
+//        }
+//    }
+    
     func fetchLeauges(endPoint: String, completion: @escaping ((Array<League>?, Error?) -> Void)) {
         if let url = URL(string: UrlServices(endPoint: endPoint).url){
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
-                    let decodedJson: LeaguesResponse = convertFromJson(data: data) ?? LeaguesResponse(countries: Array<League>())
+                    let output = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as! Dictionary<String,Any>
+                    print(output)
                     
-                    completion(decodedJson.countries, nil)
+                    let rawArray = output["countries"] as? Array<Dictionary<String,Any>> ?? Array<Dictionary<String,Any>>()
+                    var leagueArray = Array<League>()
+                    
+                    for rawLeauges in rawArray {
+                        var leauge = League()
+                        leauge.idLeague = rawLeauges["idLeague"] as? String
+                        leauge.strSport = rawLeauges["strSport"] as? String
+                        leauge.strYoutube = rawLeauges["strYoutube"] as? String
+                        leauge.strBadge = rawLeauges["strBadge"] as? String
+                        leauge.strLeague = rawLeauges["strLeague"] as? String
+                        leagueArray.append(leauge)
+                    }
+                    
+                    completion(leagueArray, nil)
                 }
                 
                 if let error = error {
