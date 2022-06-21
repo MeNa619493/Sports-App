@@ -35,6 +35,9 @@ class LeagueDetailsViewController: UIViewController {
     var upcomingEventsArray = Array<Event>()
     var latestResultsArray = Array<Event>()
     var teamsArray = Array<Team>()
+    var leagueDetailsPresnter: ILeagueDetailsPresenter?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     
     @IBOutlet weak var favouriteButton: UIBarButtonItem!
     
@@ -54,16 +57,23 @@ class LeagueDetailsViewController: UIViewController {
         latestResultsTable.showsVerticalScrollIndicator = false
         teamsCollection.showsHorizontalScrollIndicator = false
         
+        if let league = league {
+            if league.isFavourite {
+                favouriteButton.image = UIImage(systemName: "heart.fill")
+            } else {
+                favouriteButton.image = UIImage(systemName: "heart")
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let leagueDetailsPresnter: ILeagueDetailsPresenter = LeagueDetailsPresnter(leagueDetailsView: self)
+         leagueDetailsPresnter = LeagueDetailsPresnter(leagueDetailsView: self)
         
         let newString = league?.strLeague!.withReplacedCharacters(" ", by: "%20")
         
-        leagueDetailsPresnter.fetchData(
+        leagueDetailsPresnter?.fetchData(
             endPointUpcomingEvents: "eventsseason.php?id=4328&s=2022-2023",
             endPointLatestResults: "eventsseason.php?id=\(league?.idLeague ?? "4328")",
             endPointTeams: "search_all_teams.php?l=\(newString ?? "English%20Premier%20League")")
@@ -79,6 +89,7 @@ class LeagueDetailsViewController: UIViewController {
             favouriteButton.image = UIImage(systemName: "heart.fill")
             print("save league to core data")
             league?.isFavourite = true
+            leagueDetailsPresnter?.saveFavouriteLeauges(appDelegate: appDelegate, league: league!)
         } else {
             favouriteButton.image = UIImage(systemName: "heart")
             print("remove league from core data")
@@ -86,9 +97,6 @@ class LeagueDetailsViewController: UIViewController {
         }
         
     }
-    
-    
-    
 }
 
 extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

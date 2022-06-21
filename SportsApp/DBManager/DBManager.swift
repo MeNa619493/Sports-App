@@ -14,7 +14,7 @@ class DBManager{
     
     private init(){}
 
-    func addMovie(appDelegate: AppDelegate, item: League){
+    func addLeague(appDelegate: AppDelegate, item: League){
 
         let managedContext = appDelegate.persistentContainer.viewContext
 

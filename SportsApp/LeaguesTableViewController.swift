@@ -59,7 +59,6 @@ class LeaguesTableViewController: UITableViewController {
         vc.league = leaguesArray[indexPath.row]
         self.present(vc, animated: true, completion: nil)
     }
-    
 }
 
 extension LeaguesTableViewController: ILeagueView{

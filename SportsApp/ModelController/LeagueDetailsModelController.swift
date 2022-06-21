@@ -10,6 +10,7 @@ import Foundation
 
 class LeagueDetailsModelController: ILeagueDetailsModel {
     
+    let databaseManager: DatabaseService = DatabaseManager()
     let networkManager: ApiService = NetworkManager()
     var iLeagueDetailsPresnter: ILeagueDetailsPresenter
     
@@ -48,5 +49,9 @@ class LeagueDetailsModelController: ILeagueDetailsModel {
             }
         
         }
+    }
+    
+    func saveFavouriteLeauges(appDelegate: AppDelegate, league: League) {
+        databaseManager.saveFavouriteLeauges(appDelegate: appDelegate, league: league)
     }
 }

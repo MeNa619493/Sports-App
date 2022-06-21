@@ -9,6 +9,7 @@
 import Foundation
 
 class LeagueDetailsPresnter: ILeagueDetailsPresenter {
+    
     var leagueDetailsView: ILeagueDetailsview
     
     init(leagueDetailsView: ILeagueDetailsview) {
@@ -35,5 +36,10 @@ class LeagueDetailsPresnter: ILeagueDetailsPresenter {
     
     func onFail(error: Error) {
         leagueDetailsView.postErrorILeagueDetailsView(error: error)
+    }
+    
+    func saveFavouriteLeauges(appDelegate: AppDelegate, league: League) {
+        let leagueDetailsModel = LeagueDetailsModelController(iLeagueDetailsPresnter: self)
+        leagueDetailsModel.saveFavouriteLeauges(appDelegate: appDelegate, league: league)
     }
 }

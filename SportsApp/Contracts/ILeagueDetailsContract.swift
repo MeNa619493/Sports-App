@@ -20,9 +20,11 @@ protocol ILeagueDetailsPresenter {
     func onSuccessFetchingUpcomingEvents(upcomingEvents: Array<Event>)
     func onSuccessFetchingLatestResults(latestResults: Array<Event>)
     func onSuccessFetchingTeams(teams: Array<Team>)
+    func saveFavouriteLeauges(appDelegate: AppDelegate, league: League)
     func onFail(error: Error)
 }
 
 protocol ILeagueDetailsModel { 
     func fetchDataFromApi(endPointUpcomingEvents: String, endPointLatestResults: String, endPointTeams: String)
+    func saveFavouriteLeauges(appDelegate: AppDelegate, league: League)
 }
