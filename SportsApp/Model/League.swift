@@ -15,9 +15,9 @@ struct LeaguesResponse: Codable {
 struct League: Codable {
     var idLeague: String?
     var strSport: String?
-    var strYoutube:String?
-    var strBadge:String?
-    var strLeague:String?
+    var strYoutube: String?
+    var strBadge: String?
+    var strLeague: String?
     var isFavourite: Bool = false
 }
 
