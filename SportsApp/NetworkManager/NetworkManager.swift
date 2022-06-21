@@ -48,7 +48,6 @@ class NetworkManager: ApiService {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
                     let output = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as! Dictionary<String,Any>
-                    print(output)
                     
                     let rawArray = output["countries"] as? Array<Dictionary<String,Any>> ?? Array<Dictionary<String,Any>>()
                     var leagueArray = Array<League>()
@@ -79,7 +78,7 @@ class NetworkManager: ApiService {
                 if let data = data {
                     
                     let decodedJson: EventsResponse = convertFromJson(data: data) ?? EventsResponse(events: Array<Event>())
-                    
+                   
                     completion(decodedJson.events, nil)
                 }
                 
@@ -96,7 +95,7 @@ class NetworkManager: ApiService {
                 if let data = data {
                     
                     let decodedJson: EventsResponse = convertFromJson(data: data) ?? EventsResponse(events: Array<Event>())
-                    
+                   
                     completion(decodedJson.events, nil)
                 }
                 
@@ -119,6 +118,7 @@ class NetworkManager: ApiService {
                 
                 if let error = error {
                     completion(nil, error)
+                    print(error)
                 }
             }.resume()
         }

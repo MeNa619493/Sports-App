@@ -56,6 +56,7 @@ class LeaguesTableViewController: UITableViewController {
         //LeagueDetailsVC
         let vc = storyboard?.instantiateViewController(withIdentifier: "LeagueDetailsVC") as! LeagueDetailsViewController
         vc.modalPresentationStyle = .fullScreen
+        vc.league = leaguesArray[indexPath.row]
         self.present(vc, animated: true, completion: nil)
     }
     

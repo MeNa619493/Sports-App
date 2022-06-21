@@ -31,7 +31,7 @@ class LeagueDetailsViewController: UIViewController {
         }
     }
         
-    
+    var league: League?
     var upcomingEventsArray = Array<Event>()
     var latestResultsArray = Array<Event>()
     var teamsArray = Array<Team>()
@@ -58,10 +58,13 @@ class LeagueDetailsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         let leagueDetailsPresnter: ILeagueDetailsPresenter = LeagueDetailsPresnter(leagueDetailsView: self)
+        
+        let newString = league?.strLeague!.withReplacedCharacters(" ", by: "%20")
+        
         leagueDetailsPresnter.fetchData(
             endPointUpcomingEvents: "eventsseason.php?id=4328&s=2022-2023",
-            endPointLatestResults: "eventsseason.php?id=4328&s=2021-2022",
-            endPointTeams: "search_all_teams.php?l=English%20League%20Championship")
+            endPointLatestResults: "eventsseason.php?id=\(league?.idLeague ?? "4328")",
+            endPointTeams: "search_all_teams.php?l=\(newString ?? "English%20Premier%20League")")
     }
     
     @IBAction func onBackButtonPressed(_ sender: UIBarButtonItem) {
@@ -179,3 +182,9 @@ extension LeagueDetailsViewController: ILeagueDetailsview {
     }
 }
 
+extension String {
+    func withReplacedCharacters(_ oldChar: String, by newChar: String) -> String {
+        let newStr = self.replacingOccurrences(of: oldChar, with: newChar, options: .literal, range: nil)
+        return newStr
+    }
+}
