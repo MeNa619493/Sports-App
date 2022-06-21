@@ -52,12 +52,18 @@ class LeagueDetailsViewController: UIViewController {
         latestResultsTable.showsVerticalScrollIndicator = false
         teamsCollection.showsHorizontalScrollIndicator = false
         
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         let leagueDetailsPresnter: ILeagueDetailsPresenter = LeagueDetailsPresnter(leagueDetailsView: self)
         leagueDetailsPresnter.fetchData(
             endPointUpcomingEvents: "eventsseason.php?id=4328&s=2022-2023",
             endPointLatestResults: "eventsseason.php?id=4328&s=2021-2022",
             endPointTeams: "search_all_teams.php?l=English%20League%20Championship")
-        
     }
     
     @IBAction func onBackButtonPressed(_ sender: UIBarButtonItem) {
@@ -114,6 +120,12 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView ==  teamsCollection{
+            let vc = storyboard?.instantiateViewController(withIdentifier: "TeamDetailsVC") as! TeamDetailsViewController
+            vc.modalPresentationStyle = .fullScreen
+            vc.team = teamsArray[indexPath.row]
+            self.present(vc, animated: true, completion: nil)
+        }
         
     }
 }

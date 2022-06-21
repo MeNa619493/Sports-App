@@ -18,4 +18,13 @@ struct Team: Codable {
     var strLeague: String?
     var strStadiumThumb: String?
     var strTeamBadge: String?
+    var strWebsite: String?
+    var strFacebook: String?
+    var strTwitter: String?
+    var strInstagram: String?
+    var strDescriptionEN: String?
+    var strCountry: String?
+    var strYoutube: String?
+    var strSport: String?
+    var intFormedYear: String?
 }

@@ -20,8 +20,9 @@ class TeamCollectionViewCell: UICollectionViewCell {
     }
 
     func configureCell(imageUrl: String) {
-        let url = URL(string: imageUrl)
+        if let url = URL(string: imageUrl) {
         teamImage.sd_setImage(with: url, placeholderImage: UIImage(named: "SM-placeholder.png"))
+        }
     }
     
 }
