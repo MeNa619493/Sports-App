@@ -129,6 +129,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1E0873262862988A000119A4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1EC21778285E693400856354 /* Utilitis */,
+				1EC21775285E68A400856354 /* Network Service */,
+				1EF2A3352862373F0067AB6C /* Database Service */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		1EC21742285E5DF600856354 = {
 			isa = PBXGroup;
 			children = (
@@ -150,13 +160,10 @@
 		1EC2174D285E5DF600856354 /* SportsApp */ = {
 			isa = PBXGroup;
 			children = (
-				1EF2A3352862373F0067AB6C /* DBManager */,
+				1E0873262862988A000119A4 /* Services */,
 				1EC21781285E6BDC00856354 /* Presenter */,
 				1EC2177E285E6AD500856354 /* ModelController */,
 				1EC2177B285E6A3200856354 /* Contracts */,
-				1EC21778285E693400856354 /* Utilitis */,
-				1EC21775285E68A400856354 /* NetworkManager */,
-				1EC21770285E67DB00856354 /* ApiServices */,
 				1EC2176D285E676F00856354 /* Model */,
 				1EC2174E285E5DF600856354 /* AppDelegate.swift */,
 				1EC21750285E5DF600856354 /* SceneDelegate.swift */,
@@ -195,23 +202,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		1EC21770285E67DB00856354 /* ApiServices */ = {
+		1EC21775285E68A400856354 /* Network Service */ = {
 			isa = PBXGroup;
 			children = (
-				1EC21771285E67FF00856354 /* ApiServices.swift */,
 				1EC21773285E680F00856354 /* UrlServices.swift */,
-				1EDCD3B6286265C5008538FF /* DatabaseServices.swift */,
-			);
-			path = ApiServices;
-			sourceTree = "<group>";
-		};
-		1EC21775285E68A400856354 /* NetworkManager */ = {
-			isa = PBXGroup;
-			children = (
+				1EC21771285E67FF00856354 /* ApiServices.swift */,
 				1EC21776285E68C400856354 /* NetworkManager.swift */,
-				1EDCD3AE28625B8B008538FF /* DatabaseManager.swift */,
 			);
-			path = NetworkManager;
+			path = "Network Service";
 			sourceTree = "<group>";
 		};
 		1EC21778285E693400856354 /* Utilitis */ = {
@@ -255,12 +253,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		1EF2A3352862373F0067AB6C /* DBManager */ = {
+		1EF2A3352862373F0067AB6C /* Database Service */ = {
 			isa = PBXGroup;
 			children = (
+				1EDCD3AE28625B8B008538FF /* DatabaseManager.swift */,
+				1EDCD3B6286265C5008538FF /* DatabaseServices.swift */,
 				1EF2A336286245240067AB6C /* DBManager.swift */,
 			);
-			path = DBManager;
+			path = "Database Service";
 			sourceTree = "<group>";
 		};
 		1EFA23F1286157D10070C781 /* Assets */ = {

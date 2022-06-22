@@ -14,4 +14,6 @@ protocol DatabaseService {
     
     func saveFavouriteLeauges(appDelegate: AppDelegate, league: League)
     
+    func deleteLeagueFromFavourites(appDelegate: AppDelegate, league: League)
+    
 }

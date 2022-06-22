@@ -14,9 +14,11 @@ protocol IFavouriteLeagueView {
 
 protocol IFavouriteLeaguePresenter {
     func fetchData(appDelegate: AppDelegate)
+    func deleteLeagueFromCoredata(appDelegate: AppDelegate, league: League)
     func onSuccess(leagues: Array<League>)
 }
 
 protocol IFavouriteLeagueModel {
     func fetchDataFromCoredata(appDelegate: AppDelegate)
+    func deleteLeagueFromCoredata(appDelegate: AppDelegate, league: League)
 }

@@ -66,6 +66,27 @@ class DBManager{
 
         return castedList
     }
+    
+    func deleteLeagueFromFavourites(appDelegate: AppDelegate, item: League){
+        let managedContext = appDelegate.persistentContainer.viewContext
+        do{
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Model")
+            fetchRequest.predicate = NSPredicate(format: "idLeague == %@", item.idLeague!)
+            let league = try managedContext.fetch(fetchRequest)
+        
+            managedContext.delete((league as! [NSManagedObject]).first!)
+        
+            try managedContext.save()
+            print("league deleted")
+            
+        } catch let error as NSError{
+            print("Error in deleting")
+            print(error.localizedDescription)
+        }
+    }
+    
 
 }
+
+
 

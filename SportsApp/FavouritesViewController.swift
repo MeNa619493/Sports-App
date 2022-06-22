@@ -19,6 +19,7 @@ class FavouritesViewController: UIViewController {
     
     var favouriteLeagues = Array<League>()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var presenter: IFavouriteLeaguePresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +34,8 @@ class FavouritesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let presenter: IFavouriteLeaguePresenter = FavouriteLeaguePresenter(favouriteLeagueView: self)
-        presenter.fetchData(appDelegate: appDelegate)
+        presenter = FavouriteLeaguePresenter(favouriteLeagueView: self)
+        presenter?.fetchData(appDelegate: appDelegate)
     }
 }
 
@@ -64,8 +65,24 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
         //LeagueDetailsVC
         let vc = storyboard?.instantiateViewController(withIdentifier: "LeagueDetailsVC") as! LeagueDetailsViewController
         vc.modalPresentationStyle = .fullScreen
-        vc.league = favouriteLeagues[indexPath.row]
+        vc.currentLeague = favouriteLeagues[indexPath.row]
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if indexPath.row != 0 {
+            return .delete
+        }
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            self.presenter?.deleteLeagueFromCoredata(appDelegate: self.appDelegate, league: favouriteLeagues[indexPath.row])
+            favouriteLeagues.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .top)
+        }
     }
 }
 

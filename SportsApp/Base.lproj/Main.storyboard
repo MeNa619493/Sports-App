@@ -385,6 +385,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="m3U-XJ-bNe" kind="relationship" relationship="viewControllers" id="eb3-0h-CiF"/>
@@ -404,6 +405,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wja-fN-IYN">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -414,7 +416,7 @@
             </objects>
             <point key="canvasLocation" x="950.72463768115949" y="57.589285714285708"/>
         </scene>
-        <!--Favourites View Controller-->
+        <!--Favourites-->
         <scene sceneID="a99-Nw-1LA">
             <objects>
                 <viewController id="AO7-2q-Rgd" customClass="FavouritesViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -445,7 +447,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ul1-JS-Nns"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="star.fill" catalog="system" id="hWR-kP-qZE"/>
+                    <tabBarItem key="tabBarItem" title="Favourites" image="star.fill" catalog="system" id="hWR-kP-qZE"/>
                     <connections>
                         <outlet property="favouritesTable" destination="2Iz-2o-pPS" id="sBj-hg-GvD"/>
                     </connections>

@@ -10,6 +10,7 @@ import Foundation
 
 class LeagueDetailsPresnter: ILeagueDetailsPresenter {
     
+    var leagueDetailsModel: ILeagueDetailsModel?
     var leagueDetailsView: ILeagueDetailsview
     
     init(leagueDetailsView: ILeagueDetailsview) {
@@ -39,7 +40,19 @@ class LeagueDetailsPresnter: ILeagueDetailsPresenter {
     }
     
     func saveFavouriteLeauges(appDelegate: AppDelegate, league: League) {
-        let leagueDetailsModel = LeagueDetailsModelController(iLeagueDetailsPresnter: self)
-        leagueDetailsModel.saveFavouriteLeauges(appDelegate: appDelegate, league: league)
+        leagueDetailsModel?.saveFavouriteLeauges(appDelegate: appDelegate, league: league)
+    }
+    
+    func fetchFavouriteLeagues(appDelegate: AppDelegate){
+        leagueDetailsModel = LeagueDetailsModelController(iLeagueDetailsPresnter: self)
+        leagueDetailsModel!.fetchDataFromCoredata(appDelegate: appDelegate)
+    }
+    
+    func onSuccessFetchingFavouriteLeagues(leagues: Array<League>) {
+        leagueDetailsView.DeliverFavouriteLeagues(leagues: leagues)
+    }
+    
+    func deleteLeagueFromCoredata(appDelegate: AppDelegate, league: League) {
+        leagueDetailsModel?.deleteLeagueFromCoredata(appDelegate: appDelegate, league: league)
     }
 }

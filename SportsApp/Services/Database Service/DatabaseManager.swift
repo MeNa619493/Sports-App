@@ -20,4 +20,8 @@ class DatabaseManager: DatabaseService {
     func saveFavouriteLeauges(appDelegate: AppDelegate, league: League) {
         db.addLeague(appDelegate: appDelegate, item: league)
     }
+    
+    func deleteLeagueFromFavourites(appDelegate: AppDelegate, league: League) {
+        db.deleteLeagueFromFavourites(appDelegate: appDelegate, item: league)
+    }
 }

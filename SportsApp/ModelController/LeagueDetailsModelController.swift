@@ -54,4 +54,16 @@ class LeagueDetailsModelController: ILeagueDetailsModel {
     func saveFavouriteLeauges(appDelegate: AppDelegate, league: League) {
         databaseManager.saveFavouriteLeauges(appDelegate: appDelegate, league: league)
     }
+    
+    func fetchDataFromCoredata(appDelegate: AppDelegate) {
+        databaseManager.fetchFavouriteLeauges(appDelegate: appDelegate) { leagues in
+            if let leagues = leagues {
+                self.iLeagueDetailsPresnter.onSuccessFetchingFavouriteLeagues(leagues: leagues)
+            }
+        }
+    }
+    
+    func deleteLeagueFromCoredata(appDelegate: AppDelegate, league: League) {
+        databaseManager.deleteLeagueFromFavourites(appDelegate: appDelegate, league: league)
+    }
 }

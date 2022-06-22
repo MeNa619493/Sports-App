@@ -25,5 +25,7 @@ class FavouriteLeagueModelController: IFavouriteLeagueModel {
         }
     }
     
-    
+    func deleteLeagueFromCoredata(appDelegate: AppDelegate, league: League) {
+        dataBaseManager.deleteLeagueFromFavourites(appDelegate: appDelegate, league: league)
+    }
 }

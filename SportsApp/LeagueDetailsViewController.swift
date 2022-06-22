@@ -31,39 +31,22 @@ class LeagueDetailsViewController: UIViewController {
         }
     }
         
-    var league: League?
+    var currentLeague: League?
     var upcomingEventsArray = Array<Event>()
     var latestResultsArray = Array<Event>()
     var teamsArray = Array<Team>()
     var leagueDetailsPresnter: ILeagueDetailsPresenter?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
+    var favouriteLeaugeArray = Array<League>()
     
     @IBOutlet weak var favouriteButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        registerNibFiles()
+        preparingViews()
         
-        upcomingEventsCollection.register(UINib(nibName: "UpcomingEventsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "UpcomingEventsCell")
-        
-        latestResultsTable.register(UINib(nibName: "LatestResultTableViewCell", bundle: nil), forCellReuseIdentifier: "LatestResultsCell")
-        
-        
-        teamsCollection.register(UINib(nibName: "TeamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TeamCell")
-        
-        
-        upcomingEventsCollection.showsHorizontalScrollIndicator = false
-        latestResultsTable.showsVerticalScrollIndicator = false
-        teamsCollection.showsHorizontalScrollIndicator = false
-        
-        if let league = league {
-            if league.isFavourite {
-                favouriteButton.image = UIImage(systemName: "heart.fill")
-            } else {
-                favouriteButton.image = UIImage(systemName: "heart")
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,12 +54,29 @@ class LeagueDetailsViewController: UIViewController {
         
          leagueDetailsPresnter = LeagueDetailsPresnter(leagueDetailsView: self)
         
-        let newString = league?.strLeague!.withReplacedCharacters(" ", by: "%20")
+        let newString = currentLeague?.strLeague!.withReplacedCharacters(" ", by: "%20")
         
         leagueDetailsPresnter?.fetchData(
             endPointUpcomingEvents: "eventsseason.php?id=4328&s=2022-2023",
-            endPointLatestResults: "eventsseason.php?id=\(league?.idLeague ?? "4328")",
+            endPointLatestResults: "eventsseason.php?id=\(currentLeague?.idLeague ?? "4328")",
             endPointTeams: "search_all_teams.php?l=\(newString ?? "English%20Premier%20League")")
+        
+        leagueDetailsPresnter?.fetchFavouriteLeagues(appDelegate: appDelegate)
+        checkFavouriteLeague()
+    }
+    
+    func registerNibFiles() {
+        upcomingEventsCollection.register(UINib(nibName: "UpcomingEventsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "UpcomingEventsCell")
+        
+        latestResultsTable.register(UINib(nibName: "LatestResultTableViewCell", bundle: nil), forCellReuseIdentifier: "LatestResultsCell")
+        
+        teamsCollection.register(UINib(nibName: "TeamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TeamCell")
+    }
+    
+    func preparingViews() {
+        upcomingEventsCollection.showsHorizontalScrollIndicator = false
+        latestResultsTable.showsVerticalScrollIndicator = false
+        teamsCollection.showsHorizontalScrollIndicator = false
     }
     
     @IBAction func onBackButtonPressed(_ sender: UIBarButtonItem) {
@@ -85,17 +85,28 @@ class LeagueDetailsViewController: UIViewController {
     
     @IBAction func onFavouriteButtonPressed(_ sender: Any) {
         
-        if !league!.isFavourite {
+        if !currentLeague!.isFavourite {
             favouriteButton.image = UIImage(systemName: "heart.fill")
             print("save league to core data")
-            league?.isFavourite = true
-            leagueDetailsPresnter?.saveFavouriteLeauges(appDelegate: appDelegate, league: league!)
+            currentLeague!.isFavourite = true
+            leagueDetailsPresnter?.saveFavouriteLeauges(appDelegate: appDelegate, league: currentLeague!)
         } else {
             favouriteButton.image = UIImage(systemName: "heart")
             print("remove league from core data")
-            league?.isFavourite = false
+            leagueDetailsPresnter?.deleteLeagueFromCoredata(appDelegate: appDelegate, league: currentLeague!)
+            currentLeague!.isFavourite = false
         }
-        
+    }
+    
+    func checkFavouriteLeague() {
+        for item in favouriteLeaugeArray {
+            if item.idLeague == currentLeague?.idLeague {
+                favouriteButton.image = UIImage(systemName: "heart.fill")
+                currentLeague?.isFavourite = true
+            } else {
+                favouriteButton.image = UIImage(systemName: "heart")
+            }
+        }
     }
 }
 
@@ -176,6 +187,7 @@ extension LeagueDetailsViewController: UITableViewDelegate, UITableViewDataSourc
 }
 
 extension LeagueDetailsViewController: ILeagueDetailsview {
+    
     func renderUpcomingEventsView(upcomingEvents: Array<Event>) {
         self.upcomingEventsArray = upcomingEvents
         DispatchQueue.main.async {
@@ -200,6 +212,10 @@ extension LeagueDetailsViewController: ILeagueDetailsview {
     
     func postErrorILeagueDetailsView(error: Error) {
         print(error.localizedDescription)
+    }
+    
+    func DeliverFavouriteLeagues(leagues: Array<League>) {
+        favouriteLeaugeArray = leagues
     }
 }
 

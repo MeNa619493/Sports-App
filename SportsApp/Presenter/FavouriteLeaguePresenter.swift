@@ -11,6 +11,7 @@ import Foundation
 class FavouriteLeaguePresenter: IFavouriteLeaguePresenter {
     
     let favouriteLeagueView: IFavouriteLeagueView
+    var favouriteLeagueModel: IFavouriteLeagueModel?
     
     init(favouriteLeagueView: IFavouriteLeagueView) {
         self.favouriteLeagueView = favouriteLeagueView
@@ -18,12 +19,15 @@ class FavouriteLeaguePresenter: IFavouriteLeaguePresenter {
     
     
     func fetchData(appDelegate: AppDelegate) {
-        let favouriteLeagueModel = FavouriteLeagueModelController(iFavouriteLeaguePresenter: self)
-        favouriteLeagueModel.fetchDataFromCoredata(appDelegate: appDelegate)
+        favouriteLeagueModel = FavouriteLeagueModelController(iFavouriteLeaguePresenter: self)
+        favouriteLeagueModel!.fetchDataFromCoredata(appDelegate: appDelegate)
     }
     
     func onSuccess(leagues: Array<League>) {
         favouriteLeagueView.renderFavouriteLeagueView(leagues: leagues)
     }
     
+    func deleteLeagueFromCoredata(appDelegate: AppDelegate, league: League) {
+        favouriteLeagueModel!.deleteLeagueFromCoredata(appDelegate: appDelegate, league: league)
+    }
 }
