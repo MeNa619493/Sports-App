@@ -52,6 +52,7 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeagueCell", for: indexPath) as! LeagueTableViewCell
 
         // Configure the cell...
+        cell.delegate = self
         cell.configureLeaugeCell(league: favouriteLeagues[indexPath.row])
         
         return cell
@@ -92,6 +93,16 @@ extension FavouritesViewController: IFavouriteLeagueView {
         DispatchQueue.main.async {
             self.favouritesTable.reloadData()
         }
+    }
+}
+
+extension FavouritesViewController: LeagueView {
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

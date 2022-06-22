@@ -19,6 +19,8 @@ class LeagueTableViewCell: UITableViewCell {
     
     var urlYoutube: String?
     
+    var delegate: LeagueView?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -37,11 +39,13 @@ class LeagueTableViewCell: UITableViewCell {
             leaugeImage.sd_setImage(with: url, completed: nil)
         }
         self.urlYoutube = league.strYoutube ?? "no value"
+        
     }
     
     @IBAction func onYoutubePressed(_ sender: Any) {
         
         guard let urlYoutube = urlYoutube else {
+            delegate?.showAlert(title: "Sorry", message: "We don't have the link to that page right now but we are working on that.")
             return
         }
         
@@ -49,7 +53,7 @@ class LeagueTableViewCell: UITableViewCell {
             guard let url = URL(string: "https://\(urlYoutube)") else { return }
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
-            print("inavalid url")
+            delegate?.showAlert(title: "Sorry", message: "We don't have the link to that page right now but we are working on that.")
         }
     }
     

@@ -7,40 +7,57 @@
 //
 
 import UIKit
+import Reachability
 
 class MainCollectionViewController: UICollectionViewController {
     var sportsArray = Array<Sport>()
+    let reachability = try! Reachability()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.collectionView!.register(UINib(nibName: "MainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "mainCell")
+        
+        registerNibFile()
         
         let mainPresnter: IMainPresenter = MainPresenter(iMainView: self)
-        mainPresnter.fetchData(endPoint: "all_sports.php")
+        
+        reachability.whenReachable = { _ in
+            mainPresnter.fetchData(endPoint: "all_sports.php")
+        }
+        
+        reachability.whenUnreachable = { _ in
+            self.showAlertNotConnected()
+        }
 
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+    }
+    
+    func registerNibFile() {
+        self.collectionView!.register(UINib(nibName: "MainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "mainCell")
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        reachability.stopNotifier()
     }
-    */
+    
+    func showAlertNotConnected() {
+        let alert = UIAlertController(title: "Not Connected!", message: "Please, Check the internet connection.", preferredStyle: UIAlertController.Style.alert)
 
-    // MARK: UICollectionViewDataSource
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+        self.present(alert, animated: true, completion: nil)
+    }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return sportsArray.count
     }
 
@@ -65,7 +82,6 @@ class MainCollectionViewController: UICollectionViewController {
         let LeagueVC = self.storyboard?.instantiateViewController(identifier: "LeaguesVC") as! LeaguesTableViewController
         LeagueVC.sport = sportsArray[indexPath.row].strSport
         self.navigationController?.pushViewController(LeagueVC, animated: true)
-        
     }
 
 }

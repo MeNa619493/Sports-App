@@ -43,6 +43,7 @@ class LeaguesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeagueCell", for: indexPath) as! LeagueTableViewCell
 
         // Configure the cell...
+        cell.delegate = self
         cell.configureLeaugeCell(league: leaguesArray[indexPath.row])
         
         return cell
@@ -72,6 +73,14 @@ extension LeaguesTableViewController: ILeagueView{
     func postErrorLeagueView(error: Error) {
         print(error.localizedDescription)
     }
-    
-    
+}
+
+extension LeaguesTableViewController: LeagueView {
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+        self.present(alert, animated: true, completion: nil)
+    }
 }
