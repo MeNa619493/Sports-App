@@ -13,16 +13,19 @@ class TeamCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var teamImage: UIImageView!
     
+    @IBOutlet weak var teamName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         teamImage.layer.cornerRadius = teamImage.frame.height / 2
     }
 
-    func configureCell(imageUrl: String) {
-        if let url = URL(string: imageUrl) {
+    func configureCell(team: Team) {
+        if let url = URL(string: team.strTeamBadge ?? "no value") {
         teamImage.sd_setImage(with: url, placeholderImage: UIImage(named: "SM-placeholder.png"))
         }
+        teamName.text = team.strTeam ?? "no value"
     }
     
 }

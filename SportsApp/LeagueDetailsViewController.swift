@@ -136,13 +136,13 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
         case teamsCollection:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath) as! TeamCollectionViewCell
                 
-            cell.configureCell(imageUrl: teamsArray[indexPath.row].strTeamBadge ?? "no value")
+            cell.configureCell(team: teamsArray[indexPath.row])
             return cell
             
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath) as! TeamCollectionViewCell
                 
-            cell.configureCell(imageUrl: teamsArray[indexPath.row].strTeamBadge ?? "no value")
+            cell.configureCell(team: teamsArray[indexPath.row])
             return cell
         }
         

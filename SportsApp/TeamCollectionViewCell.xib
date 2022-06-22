@@ -10,31 +10,41 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TeamCell" id="gTV-IL-0wX" customClass="TeamCollectionViewCell" customModule="SportsApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yJV-Sq-UP0">
-                        <rect key="frame" x="8" y="8" width="109" height="109"/>
+                        <rect key="frame" x="15" y="1" width="120" height="120"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="109" id="MDK-J1-yRN"/>
-                            <constraint firstAttribute="height" constant="109" id="OtA-Ak-yzB"/>
+                            <constraint firstAttribute="width" constant="120" id="3Dq-dU-sM8"/>
+                            <constraint firstAttribute="height" constant="120" id="Dmt-xO-8dY"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FLf-AU-DFR">
+                        <rect key="frame" x="0.0" y="129" width="150" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="yJV-Sq-UP0" secondAttribute="bottom" constant="8" id="3wb-1r-cdR"/>
-                <constraint firstItem="yJV-Sq-UP0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="9K2-0u-O8C"/>
-                <constraint firstAttribute="trailing" secondItem="yJV-Sq-UP0" secondAttribute="trailing" constant="8" id="hGj-nQ-CtB"/>
-                <constraint firstItem="yJV-Sq-UP0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="zia-ZX-lIv"/>
+                <constraint firstAttribute="trailing" secondItem="yJV-Sq-UP0" secondAttribute="trailing" constant="15" id="5Pa-wq-YPc"/>
+                <constraint firstAttribute="bottom" secondItem="FLf-AU-DFR" secondAttribute="bottom" id="9Z7-Og-Pxj"/>
+                <constraint firstItem="yJV-Sq-UP0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="I3L-ws-ULW"/>
+                <constraint firstAttribute="trailing" secondItem="FLf-AU-DFR" secondAttribute="trailing" id="KfP-US-vxM"/>
+                <constraint firstItem="yJV-Sq-UP0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="O4C-PD-NjW"/>
+                <constraint firstItem="FLf-AU-DFR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="XxE-wm-t5g"/>
+                <constraint firstItem="FLf-AU-DFR" firstAttribute="top" secondItem="yJV-Sq-UP0" secondAttribute="bottom" constant="8" id="giV-mR-kck"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="124" height="124"/>
             <connections>
                 <outlet property="teamImage" destination="yJV-Sq-UP0" id="Ikd-V8-PeH"/>
+                <outlet property="teamName" destination="FLf-AU-DFR" id="nWL-Wf-VF6"/>
             </connections>
             <point key="canvasLocation" x="184.78260869565219" y="136.94196428571428"/>
         </collectionViewCell>
