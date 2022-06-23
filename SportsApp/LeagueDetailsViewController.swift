@@ -90,11 +90,13 @@ class LeagueDetailsViewController: UIViewController {
             print("save league to core data")
             currentLeague!.isFavourite = true
             leagueDetailsPresnter?.saveFavouriteLeauges(appDelegate: appDelegate, league: currentLeague!)
+            showToastMessage(message: "League added to favourites", color: .green)
         } else {
             favouriteButton.image = UIImage(systemName: "heart")
             print("remove league from core data")
             leagueDetailsPresnter?.deleteLeagueFromCoredata(appDelegate: appDelegate, league: currentLeague!)
             currentLeague!.isFavourite = false
+            showToastMessage(message: "League removed from favourites", color: .red)
         }
     }
     
@@ -106,6 +108,25 @@ class LeagueDetailsViewController: UIViewController {
             } else {
                 favouriteButton.image = UIImage(systemName: "heart")
             }
+        }
+    }
+    
+    func showToastMessage(message: String, color: UIColor) {
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.width/2-120, y: self.view.frame.height-100, width: 260, height: 30))
+        
+        toastLabel.textAlignment = .center
+        toastLabel.backgroundColor = color
+        toastLabel.textColor = .black
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10
+        toastLabel.clipsToBounds = true
+        toastLabel.text = message
+        self.view.addSubview(toastLabel)
+        
+        UIView.animate(withDuration: 3.0, delay: 1.0, options: .curveEaseIn, animations: {
+            toastLabel.alpha = 0.0
+        }) { (isCompleted) in
+            toastLabel.removeFromSuperview()
         }
     }
 }
@@ -196,7 +217,7 @@ extension LeagueDetailsViewController: ILeagueDetailsview {
     }
     
     func renderLatestResultsView(latestResults: Array<Event>) {
-        self.latestResultsArray = latestResults
+        self.latestResultsArray = latestResults.reversed()
         DispatchQueue.main.async {
             self.latestResultsTable.reloadData()
         }
@@ -218,6 +239,7 @@ extension LeagueDetailsViewController: ILeagueDetailsview {
         favouriteLeaugeArray = leagues
     }
 }
+
 
 extension String {
     func withReplacedCharacters(_ oldChar: String, by newChar: String) -> String {
