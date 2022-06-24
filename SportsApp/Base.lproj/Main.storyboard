@@ -300,27 +300,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hN-pv-xKL">
-                                <rect key="frame" x="70" y="576.5" width="274" height="250"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="H1I-yb-tsr"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncn-eW-4n5">
+                                <rect key="frame" x="70" y="576.5" width="274" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="uiH-4l-xg8" firstAttribute="leading" secondItem="jtx-p1-JLL" secondAttribute="trailing" constant="8" id="4Zj-Qu-cB9"/>
-                            <constraint firstItem="8hN-pv-xKL" firstAttribute="trailing" secondItem="Lnx-M2-ReX" secondAttribute="trailing" id="7xg-Ve-h5Q"/>
+                            <constraint firstItem="ncn-eW-4n5" firstAttribute="trailing" secondItem="Lnx-M2-ReX" secondAttribute="trailing" id="7Tj-Pg-G0K"/>
                             <constraint firstItem="jtx-p1-JLL" firstAttribute="top" secondItem="q5g-Zj-4OE" secondAttribute="bottom" constant="8" id="C6F-OI-P5V"/>
                             <constraint firstItem="CBn-w6-Le9" firstAttribute="leading" secondItem="ar9-1S-67V" secondAttribute="leading" constant="70" id="CwW-IB-ZGM"/>
                             <constraint firstItem="ojk-bg-OGS" firstAttribute="top" secondItem="CBn-w6-Le9" secondAttribute="bottom" constant="16" id="Czo-Ti-W3w"/>
                             <constraint firstItem="ojk-bg-OGS" firstAttribute="leading" secondItem="Fnk-F8-rZ7" secondAttribute="leading" id="IEs-FK-TcQ"/>
-                            <constraint firstItem="8hN-pv-xKL" firstAttribute="top" secondItem="Zk7-KO-qoz" secondAttribute="bottom" constant="8" id="JxY-hN-LGP"/>
                             <constraint firstItem="3XK-t9-h3j" firstAttribute="leading" secondItem="ojk-bg-OGS" secondAttribute="leading" id="Kcn-hj-0h5"/>
                             <constraint firstItem="Tms-tE-F3h" firstAttribute="leading" secondItem="q5g-Zj-4OE" secondAttribute="trailing" constant="8" id="Kl2-SR-6Q3"/>
                             <constraint firstItem="Zk7-KO-qoz" firstAttribute="top" secondItem="jtx-p1-JLL" secondAttribute="bottom" constant="8" id="Kw2-CK-af3"/>
@@ -336,12 +330,13 @@
                             <constraint firstItem="eWd-Wf-bHD" firstAttribute="top" secondItem="CBn-w6-Le9" secondAttribute="bottom" constant="16" id="aPc-Av-iUU"/>
                             <constraint firstItem="ar9-1S-67V" firstAttribute="trailing" secondItem="CBn-w6-Le9" secondAttribute="trailing" constant="70" id="afO-8R-1n0"/>
                             <constraint firstItem="Zxc-Rn-BO4" firstAttribute="top" secondItem="B9c-Mv-V4d" secondAttribute="bottom" constant="24" id="amA-Ps-yix"/>
-                            <constraint firstItem="8hN-pv-xKL" firstAttribute="leading" secondItem="Zk7-KO-qoz" secondAttribute="leading" id="bZG-wx-jpc"/>
                             <constraint firstItem="CBn-w6-Le9" firstAttribute="top" secondItem="Zxc-Rn-BO4" secondAttribute="bottom" constant="16" id="eyy-1a-LFS"/>
                             <constraint firstItem="B9c-Mv-V4d" firstAttribute="top" secondItem="ar9-1S-67V" secondAttribute="top" id="gQa-fm-X12"/>
                             <constraint firstItem="Tms-tE-F3h" firstAttribute="top" secondItem="cr8-aH-9z3" secondAttribute="bottom" constant="8" id="iYY-WC-Pem"/>
+                            <constraint firstItem="ncn-eW-4n5" firstAttribute="leading" secondItem="Zk7-KO-qoz" secondAttribute="leading" id="kQV-5u-EMo"/>
                             <constraint firstItem="uiH-4l-xg8" firstAttribute="leading" secondItem="jtx-p1-JLL" secondAttribute="trailing" constant="8" id="llt-FV-dvf"/>
                             <constraint firstItem="Zk7-KO-qoz" firstAttribute="leading" secondItem="jtx-p1-JLL" secondAttribute="leading" id="lxM-hp-9wH"/>
+                            <constraint firstItem="ncn-eW-4n5" firstAttribute="top" secondItem="Zk7-KO-qoz" secondAttribute="bottom" constant="8" id="odI-2F-I3j"/>
                             <constraint firstItem="Zxc-Rn-BO4" firstAttribute="centerX" secondItem="5ml-0M-LCL" secondAttribute="centerX" id="qpU-ct-KOv"/>
                             <constraint firstItem="B9c-Mv-V4d" firstAttribute="leading" secondItem="ar9-1S-67V" secondAttribute="leading" id="vHc-8V-C6x"/>
                             <constraint firstItem="3XK-t9-h3j" firstAttribute="top" secondItem="ojk-bg-OGS" secondAttribute="bottom" constant="8" id="vuJ-za-Cnb"/>
@@ -354,7 +349,7 @@
                         <outlet property="teamFormedYearLabel" destination="uiH-4l-xg8" id="aAL-JN-7s8"/>
                         <outlet property="teamImage" destination="Zxc-Rn-BO4" id="oKv-sg-QLP"/>
                         <outlet property="teamNameLabel" destination="eWd-Wf-bHD" id="rgq-fx-aou"/>
-                        <outlet property="teamPerfaceText" destination="8hN-pv-xKL" id="YRe-f8-m8m"/>
+                        <outlet property="teamPerfaceText" destination="ncn-eW-4n5" id="30b-vb-Tjk"/>
                         <outlet property="teamSportLabel" destination="Tms-tE-F3h" id="zVl-sA-4GK"/>
                     </connections>
                 </viewController>
@@ -369,7 +364,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="VGf-fr-UxA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="x6i-IV-yV7">
                             <size key="itemSize" width="175" height="175"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>

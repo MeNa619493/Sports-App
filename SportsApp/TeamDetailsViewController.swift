@@ -23,7 +23,8 @@ class TeamDetailsViewController: UIViewController {
     
     @IBOutlet weak var teamFormedYearLabel: UILabel!
     
-    @IBOutlet weak var teamPerfaceText: UITextView!
+    @IBOutlet weak var teamPerfaceText: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

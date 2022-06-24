@@ -22,4 +22,6 @@ struct Event: Codable {
     var strAwayTeam: String?
     var intHomeScore: String?
     var intAwayScore: String?
+    var idHomeTeam: String?
+    var idAwayTeam: String?
 }

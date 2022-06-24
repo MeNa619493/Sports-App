@@ -197,6 +197,21 @@ extension LeagueDetailsViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: "LatestResultsCell", for: indexPath) as! LatestResultTableViewCell
 
         // Configure the cell...
+        for item in teamsArray {
+            if item.idTeam == latestResultsArray[indexPath.row].idHomeTeam {
+                cell.setHomeTeamImage(urlImage: item.strTeamBadge ?? "no value")
+                break
+            }
+        }
+        
+        for item in teamsArray {
+            if item.idTeam == latestResultsArray[indexPath.row].idAwayTeam {
+                cell.setAwayTeamImage(urlImage: item.strTeamBadge ?? "no value")
+                break
+            }
+        }
+        
+        
         cell.configureCell(latestResult: latestResultsArray[indexPath.row])
         return cell
     }

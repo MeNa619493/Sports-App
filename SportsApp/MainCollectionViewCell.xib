@@ -31,7 +31,6 @@
                     </imageView>
                 </subviews>
             </view>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="UYj-bF-lqg" secondAttribute="trailing" constant="12" id="DeU-JB-QBH"/>
                 <constraint firstAttribute="bottom" secondItem="OcZ-NK-OXw" secondAttribute="bottom" constant="8" id="Izh-Nb-9zA"/>
