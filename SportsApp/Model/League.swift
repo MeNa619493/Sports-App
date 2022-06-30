@@ -18,6 +18,6 @@ struct League: Codable {
     var strYoutube: String?
     var strBadge: String?
     var strLeague: String?
-    var isFavourite: Bool = false
+    var isFavourite: Bool = false //checking league favourite or not
 }
 
