@@ -7,28 +7,68 @@
 //
 
 import UIKit
+import Reachability
+import ProgressHUD
 
 class LeaguesTableViewController: UITableViewController {
     
     var leaguesArray = Array<League>()
     var sport:String?
+    let reachability = try! Reachability()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView!.register(UINib(nibName: "LeagueTableViewCell", bundle: nil), forCellReuseIdentifier: "LeagueCell")
-        
-        self.tableView.separatorStyle = .none
-        self.tableView.showsVerticalScrollIndicator = false
+        registerNibFile()
+        showprogress()
+        setupView()
         
         let leaguePresenter: ILeaguePresenter = LeaguePresenter(leagueView: self)
-        if let sport = sport {
-            leaguePresenter.fetchData(endPoint: "search_all_leagues.php?s=\(sport)")
+        
+        reachability.whenReachable = { _ in
+            if let sport = self.sport {
+                leaguePresenter.fetchData(endPoint: "search_all_leagues.php?s=\(sport)")
+            }
+        }
+        
+        reachability.whenUnreachable = { _ in
+            self.showAlertNotConnected()
+        }
+
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
         }
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        reachability.stopNotifier()
+    }
+    
+    func setupView() {
+        self.tableView.separatorStyle = .none
+        self.tableView.showsVerticalScrollIndicator = false
+    }
+    
+    func registerNibFile() {
+        self.tableView!.register(UINib(nibName: "LeagueTableViewCell", bundle: nil), forCellReuseIdentifier: "LeagueCell")
+    }
+    
+    func showprogress() {
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+    }
+    
+    func showAlertNotConnected() {
+        let alert = UIAlertController(title: "Not Connected!", message: "Please, Check the internet connection.", preferredStyle: UIAlertController.Style.alert)
 
-    // MARK: - Table view data source
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+        self.present(alert, animated: true, completion: nil)
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -54,7 +94,6 @@ class LeaguesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //LeagueDetailsVC
         let vc = storyboard?.instantiateViewController(withIdentifier: "LeagueDetailsVC") as! LeagueDetailsViewController
         vc.modalPresentationStyle = .fullScreen
         vc.currentLeague = leaguesArray[indexPath.row]
@@ -67,6 +106,7 @@ extension LeaguesTableViewController: ILeagueView{
         self.leaguesArray = leagues
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            ProgressHUD.dismiss()
         }
     }
     

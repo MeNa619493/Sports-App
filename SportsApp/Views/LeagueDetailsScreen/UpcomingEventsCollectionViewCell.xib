@@ -16,12 +16,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="201" height="237"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="akl-1q-cIh">
-                        <rect key="frame" x="8" y="8" width="185" height="163"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="185" id="NCj-Wc-7Zt"/>
-                            <constraint firstAttribute="height" constant="163" id="eDR-re-Ajg"/>
-                        </constraints>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="akl-1q-cIh">
+                        <rect key="frame" x="0.0" y="0.0" width="201" height="171"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="P2F-jC-Ry9">
                         <rect key="frame" x="8" y="208" width="100.5" height="21"/>
@@ -48,17 +44,17 @@
                 <constraint firstItem="kGl-Dy-nbd" firstAttribute="top" secondItem="akl-1q-cIh" secondAttribute="bottom" constant="8" id="2eV-Fg-r74"/>
                 <constraint firstAttribute="trailing" secondItem="kGl-Dy-nbd" secondAttribute="trailing" constant="8" id="7km-XV-Ica"/>
                 <constraint firstAttribute="trailing" secondItem="yX2-kt-vVC" secondAttribute="trailing" constant="8" id="AdN-fF-PEb"/>
-                <constraint firstItem="akl-1q-cIh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="D6A-XM-ApJ"/>
+                <constraint firstItem="akl-1q-cIh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="D6A-XM-ApJ"/>
                 <constraint firstAttribute="bottom" secondItem="P2F-jC-Ry9" secondAttribute="bottom" constant="8" id="HAI-E7-HkC"/>
                 <constraint firstItem="P2F-jC-Ry9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="O2r-rl-vbN"/>
                 <constraint firstItem="P2F-jC-Ry9" firstAttribute="top" secondItem="kGl-Dy-nbd" secondAttribute="bottom" constant="8" id="Uq4-et-ll7"/>
                 <constraint firstItem="yX2-kt-vVC" firstAttribute="top" secondItem="kGl-Dy-nbd" secondAttribute="bottom" constant="8" id="VaQ-FS-kh7"/>
                 <constraint firstItem="kGl-Dy-nbd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="aPU-PH-UIM"/>
-                <constraint firstItem="akl-1q-cIh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="bI2-bU-1dk"/>
+                <constraint firstItem="akl-1q-cIh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="bI2-bU-1dk"/>
                 <constraint firstItem="P2F-jC-Ry9" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="1/2" id="dit-uv-gkd"/>
                 <constraint firstAttribute="bottom" secondItem="yX2-kt-vVC" secondAttribute="bottom" constant="8" id="jgi-VU-Cpp"/>
                 <constraint firstItem="yX2-kt-vVC" firstAttribute="leading" secondItem="P2F-jC-Ry9" secondAttribute="trailing" id="nRP-mS-0p1"/>
-                <constraint firstAttribute="trailing" secondItem="akl-1q-cIh" secondAttribute="trailing" constant="8" id="tJP-1D-LTD"/>
+                <constraint firstAttribute="trailing" secondItem="akl-1q-cIh" secondAttribute="trailing" id="tJP-1D-LTD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="201" height="254"/>
@@ -68,7 +64,7 @@
                 <outlet property="teamsLabel" destination="kGl-Dy-nbd" id="KnS-Db-Mfj"/>
                 <outlet property="upcomingImage" destination="akl-1q-cIh" id="wBD-pm-29s"/>
             </connections>
-            <point key="canvasLocation" x="241.30434782608697" y="88.392857142857139"/>
+            <point key="canvasLocation" x="241.30434782608697" y="88.058035714285708"/>
         </collectionViewCell>
     </objects>
 </document>

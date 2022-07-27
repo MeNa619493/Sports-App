@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Reachability
+import ProgressHUD
 
 class LeagueDetailsViewController: UIViewController {
 
@@ -30,6 +32,7 @@ class LeagueDetailsViewController: UIViewController {
             teamsCollection.dataSource = self
         }
     }
+    @IBOutlet weak var favouriteButton: UIBarButtonItem!
         
     var currentLeague: League?
     var upcomingEventsArray = Array<Event>()
@@ -38,31 +41,44 @@ class LeagueDetailsViewController: UIViewController {
     var leagueDetailsPresnter: ILeagueDetailsPresenter?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var favouriteLeaugeArray = Array<League>()
-    
-    @IBOutlet weak var favouriteButton: UIBarButtonItem!
+    let reachability = try! Reachability()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         registerNibFiles()
-        preparingViews()
-        
+        showprogress()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-         leagueDetailsPresnter = LeagueDetailsPresnter(leagueDetailsView: self)
-        
+        leagueDetailsPresnter = LeagueDetailsPresnter(leagueDetailsView: self)
         let newString = currentLeague?.strLeague!.withReplacedCharacters(" ", by: "%20")
-        
-        leagueDetailsPresnter?.fetchData(
+    
+        reachability.whenReachable = { _ in
+            self.leagueDetailsPresnter?.fetchData(
             endPointUpcomingEvents: "eventsseason.php?id=4328&s=2022-2023",
-            endPointLatestResults: "eventsseason.php?id=\(currentLeague?.idLeague ?? "4328")",
+            endPointLatestResults: "eventsseason.php?id=\(self.currentLeague?.idLeague ?? "4328")",
             endPointTeams: "search_all_teams.php?l=\(newString ?? "English%20Premier%20League")")
+        }
+        
+        reachability.whenUnreachable = { _ in
+            self.showAlertNotConnected()
+        }
+
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
         
         leagueDetailsPresnter?.fetchFavouriteLeagues(appDelegate: appDelegate)
         checkFavouriteLeague()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        reachability.stopNotifier()
     }
     
     func registerNibFiles() {
@@ -73,10 +89,17 @@ class LeagueDetailsViewController: UIViewController {
         teamsCollection.register(UINib(nibName: "TeamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TeamCell")
     }
     
-    func preparingViews() {
-        upcomingEventsCollection.showsHorizontalScrollIndicator = false
-        latestResultsTable.showsVerticalScrollIndicator = false
-        teamsCollection.showsHorizontalScrollIndicator = false
+    func showprogress() {
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+    }
+    
+    func showAlertNotConnected() {
+        let alert = UIAlertController(title: "Not Connected!", message: "Please, Check the internet connection.", preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func onBackButtonPressed(_ sender: UIBarButtonItem) {
@@ -109,6 +132,7 @@ class LeagueDetailsViewController: UIViewController {
                 favouriteButton.image = UIImage(systemName: "heart")
             }
         }
+        ProgressHUD.dismiss()
     }
     
     func showToastMessage(message: String, color: UIColor) {
@@ -170,7 +194,7 @@ extension LeagueDetailsViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: upcomingEventsCollection.frame.width, height: upcomingEventsCollection.frame.height)
+        return CGSize(width: upcomingEventsCollection.frame.width / 2, height: upcomingEventsCollection.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -196,7 +220,6 @@ extension LeagueDetailsViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LatestResultsCell", for: indexPath) as! LatestResultTableViewCell
 
-        // Configure the cell...
         for item in teamsArray {
             if item.idTeam == latestResultsArray[indexPath.row].idHomeTeam {
                 cell.setHomeTeamImage(urlImage: item.strTeamBadge ?? "no value")
@@ -215,10 +238,6 @@ extension LeagueDetailsViewController: UITableViewDelegate, UITableViewDataSourc
         cell.configureCell(latestResult: latestResultsArray[indexPath.row])
         return cell
     }
-    
-//    private func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 80.0
-//    }
     
 }
 

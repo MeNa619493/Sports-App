@@ -1,5 +1,6 @@
 PODS:
   - lottie-ios (3.3.0)
+  - ProgressHUD (13.6)
   - ReachabilitySwift (5.0.0)
   - SDWebImage (5.12.5):
     - SDWebImage/Core (= 5.12.5)
@@ -7,20 +8,23 @@ PODS:
 
 DEPENDENCIES:
   - lottie-ios
+  - ProgressHUD
   - ReachabilitySwift
   - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - lottie-ios
+    - ProgressHUD
     - ReachabilitySwift
     - SDWebImage
 
 SPEC CHECKSUMS:
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
 
-PODFILE CHECKSUM: 46928435d415d5a3075cba540faf98759c747ca7
+PODFILE CHECKSUM: 91a508a85a8cffc80933efd26d11daab1c364b61
 
 COCOAPODS: 1.11.3

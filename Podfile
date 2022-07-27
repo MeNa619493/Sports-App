@@ -9,4 +9,5 @@ target 'SportsApp' do
 pod 'SDWebImage', '~> 5.0'
 pod 'lottie-ios'
 pod 'ReachabilitySwift'
+pod 'ProgressHUD'
 end

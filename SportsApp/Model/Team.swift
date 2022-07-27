@@ -27,4 +27,8 @@ struct Team: Codable {
     var strYoutube: String?
     var strSport: String?
     var intFormedYear: String?
+    var strTeamJersey: String?
+    var strTeamBanner: String?
+    var strStadiumDescription: String?
+    var strStadium: String?
 }

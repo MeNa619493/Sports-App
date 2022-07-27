@@ -12,25 +12,22 @@ import SDWebImage
 class LeagueTableViewCell: UITableViewCell {
     
     @IBOutlet weak var leaugeImage: UIImageView!
-    
     @IBOutlet weak var leaugeLabel: UILabel!
-    
     @IBOutlet weak var containerViewOfCell: UIView!
     
     var urlYoutube: String?
-    
     var delegate: LeagueView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         containerViewOfCell.layer.cornerRadius = containerViewOfCell.frame.height / 2
         leaugeImage.layer.cornerRadius = leaugeImage.frame.height / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
+        
     }
     
     func configureLeaugeCell(league: League) {

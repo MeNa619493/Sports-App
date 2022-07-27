@@ -12,16 +12,12 @@ import SDWebImage
 class UpcomingEventsCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var upcomingImage: UIImageView!
-    
     @IBOutlet weak var teamsLabel: UILabel!
-    
     @IBOutlet weak var dateLabel: UILabel!
-    
     @IBOutlet weak var hourLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     func configureCell(upcomingEvent: Event) {

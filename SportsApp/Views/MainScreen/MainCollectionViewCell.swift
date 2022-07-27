@@ -12,19 +12,17 @@ import SDWebImage
 class MainCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var sportsLabel: UILabel!
-    
     @IBOutlet weak var sportsImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        sportsImage.layer.cornerRadius = sportsImage.frame.height / 2
+        sportsImage.layer.cornerRadius = 12
+        self.layer.cornerRadius = 12
     }
     
     func configureMainCell(sport: Sport) {
         sportsLabel.text = sport.strSport ?? "no value"
         if let url = URL(string: sport.strSportThumb ?? "no value") {
-            //sportsImage.sd_setImage(with: url, completed: nil)
             sportsImage.sd_setImage(with: url, placeholderImage: UIImage(named: "SM-placeholder.png"))
         }
     }

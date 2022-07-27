@@ -13,32 +13,44 @@ class TeamDetailsViewController: UIViewController {
     
     var team: Team?
 
+    @IBOutlet weak var teamStaduimImage: UIImageView!
     @IBOutlet weak var teamImage: UIImageView!
-    
     @IBOutlet weak var teamNameLabel: UILabel!
-    
-    @IBOutlet weak var teamCountryLabel: UILabel!
-    
-    @IBOutlet weak var teamSportLabel: UILabel!
-    
+    @IBOutlet weak var teamJersyImage: UIImageView!
     @IBOutlet weak var teamFormedYearLabel: UILabel!
     
-    @IBOutlet weak var teamPerfaceText: UILabel!
+    @IBOutlet weak var teamDescriptionLabel: UILabel!
+    @IBOutlet weak var teamStaduimLabel: UILabel!
+    
+    @IBOutlet weak var teamStaduimDescriptionLabel: UILabel!
+    @IBOutlet weak var teamBannerImage: UIImageView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        teamImage.layer.cornerRadius = teamImage.frame.height / 2
         if let url = URL(string: team?.strTeamBadge ?? "no value"){
             teamImage.sd_setImage(with: url, placeholderImage: UIImage(named: "SM-placeholder.png"))
         }
         
+        if let url = URL(string: team?.strStadiumThumb ?? "no value"){
+            teamStaduimImage.sd_setImage(with: url, placeholderImage: UIImage(named: "SM-placeholder.png"))
+        }
+        
+        if let url = URL(string: team?.strTeamJersey ?? "no value"){
+            teamJersyImage.sd_setImage(with: url, placeholderImage: UIImage(named: "SM-placeholder.png"))
+        }
+        
+        if let url = URL(string: team?.strTeamBanner ?? "no value"){
+            teamBannerImage.sd_setImage(with: url, placeholderImage: UIImage(named: "SM-placeholder.png"))
+        }
+        
         teamNameLabel.text = team?.strTeam
-        teamCountryLabel.text = team?.strCountry
-        teamSportLabel.text = team?.strSport
         teamFormedYearLabel.text = team?.intFormedYear
-        teamPerfaceText.text = team?.strDescriptionEN
+        teamDescriptionLabel.text = team?.strDescriptionEN
+        teamStaduimLabel.text = team?.strStadium
+        teamStaduimDescriptionLabel.text = team?.strStadiumDescription
+        
     }
     
 

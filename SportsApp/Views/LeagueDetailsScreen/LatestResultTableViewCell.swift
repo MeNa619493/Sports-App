@@ -11,30 +11,21 @@ import UIKit
 class LatestResultTableViewCell: UITableViewCell {
 
     @IBOutlet weak var homeTeamLabel: UILabel!
-    
     @IBOutlet weak var homeTeamScoreLabel: UILabel!
-    
     @IBOutlet weak var homeTeamImage: UIImageView!
-    
     @IBOutlet weak var awayTeamLabel: UILabel!
-    
     @IBOutlet weak var awayTeamScoreLabel: UILabel!
-    
     @IBOutlet weak var awayTeamImage: UIImageView!
-    
-    
     @IBOutlet weak var containerView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         containerView.layer.cornerRadius = containerView.frame.height / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func configureCell(latestResult: Event) {

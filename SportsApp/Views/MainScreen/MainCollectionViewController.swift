@@ -8,6 +8,7 @@
 
 import UIKit
 import Reachability
+import ProgressHUD
 
 class MainCollectionViewController: UICollectionViewController {
     var sportsArray = Array<Sport>()
@@ -17,6 +18,7 @@ class MainCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         registerNibFile()
+        showprogress()
         
         let mainPresnter: IMainPresenter = MainPresenter(iMainView: self)
         
@@ -35,14 +37,20 @@ class MainCollectionViewController: UICollectionViewController {
         }
     }
     
-    func registerNibFile() {
-        self.collectionView!.register(UINib(nibName: "MainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "mainCell")
-    }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         reachability.stopNotifier()
     }
+    
+    func registerNibFile() {
+        self.collectionView!.register(UINib(nibName: "MainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "mainCell")
+    }
+    
+    func showprogress() {
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+    }
+
     
     func showAlertNotConnected() {
         let alert = UIAlertController(title: "Not Connected!", message: "Please, Check the internet connection.", preferredStyle: UIAlertController.Style.alert)
@@ -64,17 +72,9 @@ class MainCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mainCell", for: indexPath) as! MainCollectionViewCell
         
-        // Configure the cell
         cell.configureMainCell(sport: sportsArray[indexPath.row])
     
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:
-        UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            
-        let widthSize = (self.collectionView.frame.size.width) / 2
-        return CGSize(width: widthSize, height: widthSize)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -92,6 +92,7 @@ extension MainCollectionViewController: IMainView {
         self.sportsArray = sports
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+            ProgressHUD.dismiss()
         }
     }
     

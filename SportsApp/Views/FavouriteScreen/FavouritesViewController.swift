@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class FavouritesViewController: UIViewController {
 
@@ -23,20 +24,34 @@ class FavouritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.favouritesTable!.register(UINib(nibName: "LeagueTableViewCell", bundle: nil), forCellReuseIdentifier: "LeagueCell")
         
-        self.favouritesTable.separatorStyle = .none
-        self.favouritesTable.showsVerticalScrollIndicator = false
+        registerNibFile()
+        setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        showprogress()
         presenter = FavouriteLeaguePresenter(favouriteLeagueView: self)
         presenter?.fetchData(appDelegate: appDelegate)
     }
+
+
+    func setupView() {
+        self.favouritesTable.separatorStyle = .none
+        self.favouritesTable.showsVerticalScrollIndicator = false
+    }
+
+    func registerNibFile() {
+        self.favouritesTable!.register(UINib(nibName: "LeagueTableViewCell", bundle: nil), forCellReuseIdentifier: "LeagueCell")
+    }
+
+    func showprogress() {
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+    }
+    
 }
 
 extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
@@ -51,7 +66,6 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeagueCell", for: indexPath) as! LeagueTableViewCell
 
-        // Configure the cell...
         cell.delegate = self
         cell.configureLeaugeCell(league: favouriteLeagues[indexPath.row])
         
@@ -63,7 +77,7 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //LeagueDetailsVC
+        
         let vc = storyboard?.instantiateViewController(withIdentifier: "LeagueDetailsVC") as! LeagueDetailsViewController
         vc.modalPresentationStyle = .fullScreen
         vc.currentLeague = favouriteLeagues[indexPath.row]
@@ -92,6 +106,7 @@ extension FavouritesViewController: IFavouriteLeagueView {
         favouriteLeagues = leagues
         DispatchQueue.main.async {
             self.favouritesTable.reloadData()
+            ProgressHUD.dismiss()
         }
     }
 }
