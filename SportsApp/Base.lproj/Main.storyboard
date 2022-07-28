@@ -172,7 +172,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SmU-wZ-oUT">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="817"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="829"/>
                                         <subviews>
                                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEG-wT-P2U">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -210,8 +210,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KDW-F9-dAo">
-                                                <rect key="frame" x="24" y="441.5" width="366" height="106"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="KDW-F9-dAo">
+                                                <rect key="frame" x="24" y="441.5" width="366" height="118"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wXf-eD-2Ww">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="20.5"/>
@@ -231,7 +231,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="8cx-zt-PzJ">
-                                                        <rect key="frame" x="0.0" y="28.5" width="366" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="32.5" width="366" height="20.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POR-Y2-TDG">
                                                                 <rect key="frame" x="0.0" y="0.0" width="183" height="20.5"/>
@@ -248,7 +248,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iTe-Es-L2T">
-                                                        <rect key="frame" x="0.0" y="57" width="366" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="65" width="366" height="20.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Staduim:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Feb-At-YGe">
                                                                 <rect key="frame" x="0.0" y="0.0" width="183" height="20.5"/>
@@ -265,7 +265,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="BPD-4O-a41">
-                                                        <rect key="frame" x="0.0" y="85.5" width="366" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="97.5" width="366" height="20.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stadium Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MT-ST-TbH">
                                                                 <rect key="frame" x="0.0" y="0.0" width="183" height="20.5"/>
@@ -283,48 +283,68 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VXb-Cx-X1m">
-                                                <rect key="frame" x="128" y="563.5" width="262" height="50"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="VXb-Cx-X1m">
+                                                <rect key="frame" x="124" y="575.5" width="266" height="50"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWK-dr-VVF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="46" height="50"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWK-dr-VVF">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="T5t-a5-zk3"/>
+                                                            <constraint firstAttribute="width" constant="50" id="kWk-lh-cVz"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button"/>
+                                                        <state key="normal" image="Facebook-icon-1"/>
+                                                        <connections>
+                                                            <action selector="onFacebookButtonPressed:" destination="zKl-HV-yyI" eventType="touchUpInside" id="wgC-BY-wVm"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eV5-XO-XPn">
-                                                        <rect key="frame" x="54" y="0.0" width="46" height="50"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eV5-XO-XPn">
+                                                        <rect key="frame" x="54" y="0.0" width="50" height="50"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="Iwy-dC-Yi8"/>
                                                             <constraint firstAttribute="height" constant="50" id="kTN-Ev-YxQ"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button"/>
+                                                        <state key="normal" image="-11598201370n6uqg8bciy"/>
+                                                        <connections>
+                                                            <action selector="onIstgramButtonPressed:" destination="zKl-HV-yyI" eventType="touchUpInside" id="USQ-FF-ygw"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csh-wR-eV7">
-                                                        <rect key="frame" x="108" y="0.0" width="46" height="50"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csh-wR-eV7">
+                                                        <rect key="frame" x="108" y="0.0" width="50" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="RDp-Jb-tB5"/>
+                                                            <constraint firstAttribute="width" constant="50" id="vvd-Bz-JhE"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button"/>
+                                                        <state key="normal" image="124021"/>
+                                                        <connections>
+                                                            <action selector="onTwitterButtonPressed:" destination="zKl-HV-yyI" eventType="touchUpInside" id="ggL-u0-zl9"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GyB-v5-Ngn">
-                                                        <rect key="frame" x="162" y="0.0" width="46" height="50"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GyB-v5-Ngn">
+                                                        <rect key="frame" x="162" y="0.0" width="50" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="SOO-ww-Gh5"/>
+                                                            <constraint firstAttribute="width" constant="50" id="Yhi-bh-lit"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button"/>
+                                                        <state key="normal" image="640px-YouTube_social_red_square_(2017).svg"/>
+                                                        <connections>
+                                                            <action selector="onYoutubeButtonPressed:" destination="zKl-HV-yyI" eventType="touchUpInside" id="Dve-pa-lCz"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ws6-wf-enJ">
-                                                        <rect key="frame" x="216" y="0.0" width="46" height="50"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ws6-wf-enJ">
+                                                        <rect key="frame" x="216" y="0.0" width="50" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="XAp-o2-Hd3"/>
+                                                            <constraint firstAttribute="width" constant="50" id="bN7-Cr-B0l"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button"/>
+                                                        <state key="normal" image="6471842"/>
+                                                        <connections>
+                                                            <action selector="onWebsiteButtonPressed:" destination="zKl-HV-yyI" eventType="touchUpInside" id="eO8-T4-jE0"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9fb-mv-f6K">
-                                                <rect key="frame" x="0.0" y="637.5" width="414" height="179.5"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9fb-mv-f6K">
+                                                <rect key="frame" x="0.0" y="649.5" width="414" height="179.5"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -378,6 +398,9 @@
                         <viewLayoutGuide key="safeArea" id="KKE-Sw-EPF"/>
                     </view>
                     <connections>
+                        <outlet property="YoutubeButton" destination="GyB-v5-Ngn" id="wgE-hC-oQC"/>
+                        <outlet property="facebookButton" destination="OWK-dr-VVF" id="6Px-5e-77u"/>
+                        <outlet property="instgramButton" destination="eV5-XO-XPn" id="ajl-4i-62K"/>
                         <outlet property="teamBannerImage" destination="9fb-mv-f6K" id="0Gk-v9-kNt"/>
                         <outlet property="teamDescriptionLabel" destination="I60-yv-BFt" id="2ZE-Mr-Wbc"/>
                         <outlet property="teamFormedYearLabel" destination="J0L-p4-gEo" id="UqK-GJ-ibF"/>
@@ -387,6 +410,8 @@
                         <outlet property="teamStaduimDescriptionLabel" destination="F8J-kC-oxC" id="Oq4-nw-89B"/>
                         <outlet property="teamStaduimImage" destination="BSd-uP-RPg" id="L79-bL-hUC"/>
                         <outlet property="teamStaduimLabel" destination="Hbh-vH-7F3" id="8fG-Qt-z1P"/>
+                        <outlet property="twttierButton" destination="csh-wR-eV7" id="jOY-Q3-1Ex"/>
+                        <outlet property="websiteButton" destination="ws6-wf-enJ" id="7KB-Uq-TSJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nUm-kk-Isy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -519,6 +544,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="-11598201370n6uqg8bciy" width="160" height="160"/>
+        <image name="124021" width="170.5" height="170.5"/>
+        <image name="640px-YouTube_social_red_square_(2017).svg" width="213" height="213"/>
+        <image name="6471842" width="170.5" height="170.5"/>
+        <image name="Facebook-icon-1" width="256" height="256"/>
         <image name="heart" catalog="system" width="64" height="54"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
         <image name="round_arrow_back_ios_black_18pt_1x" width="18" height="18"/>
